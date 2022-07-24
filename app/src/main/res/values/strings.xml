@@ -14,4 +14,5 @@
     <string name="connectionWarning">Please use the UUID 98:D3:71:FE:13:4D to connect to Project Silent Willow</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
+    <string name="listpaireddevices">List Paired Devices</string>
 </resources>

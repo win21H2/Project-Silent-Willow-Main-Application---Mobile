@@ -165,6 +165,23 @@
         app:layout_constraintVertical_bias="0.05"
         app:rippleColor="@color/buttonclick" />
 
+    <Button
+        android:id="@+id/paireddevices"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="@string/listpaireddevices"
+        android:textAllCaps="false"
+        android:textColor="@color/main"
+        android:backgroundTint="#22272e"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/buttonclick" />
+
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
         android:layout_width="75dp"
@@ -174,30 +191,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <SeekBar
-        android:id="@+id/speedcontrol"
-        android:layout_width="310dp"
-        android:layout_height="28dp"
-        android:backgroundTint="@color/darkcolor"
-        android:progressBackgroundTint="@color/main"
-        android:thumb="@android:drawable/editbox_dropdown_dark_frame"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
-
-    <TextView
-        android:id="@+id/teststatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/teststring"
-        android:textColor="@color/main"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

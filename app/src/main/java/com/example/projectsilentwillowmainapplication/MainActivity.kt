@@ -1,7 +1,10 @@
 package com.example.projectsilentwillowmainapplication
 
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothManager
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -31,13 +34,31 @@ class MainActivity : AppCompatActivity() {
         val rotateright: Button = findViewById(R.id.rotateright)
         val stop: Button = findViewById(R.id.stop)
 
-        val textView = findViewById<android.widget.TextView>(R.id.teststatus)
+        val connect: Button = findViewById(R.id.paireddevices)
+        val connect1: Button = findViewById(R.id.connect)
+        val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
+        val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
 
-        val currentText = textView.text.toString()
+        connect.setOnClickListener {
+            if (bluetoothAdapter == null) {
+                Toast.makeText(this, "Bluetooth not supported", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Bluetooth supported", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        connect1.setOnClickListener {
+            if (!bluetoothAdapter!!.isEnabled) {
+                Toast.makeText(this, "Bluetooth is off", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Bluetooth is already on", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         // TODO: Make it so that when a user clicks one of the movement buttons, it A: sends a byte to PSW and B: displays a log of which button was pressed
         // TODO: A: SEND A BYTE
         // TODO: B: DISPLAY A LOG OF WHICH BUTTON WAS PRESSED UNDERNEATH THE SPEED CONTROL BAR ON IN A SEPARATE WINDOW
+        // TODO: HAVE TO SHOW A LIST OF PAIRED BT DEVICES IN A LIST VIEW
 
         backwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
@@ -47,8 +68,6 @@ class MainActivity : AppCompatActivity() {
             rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            // send BYTE after
-            textView.text = currentText + "Backwards"
         }
         forwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -58,8 +77,6 @@ class MainActivity : AppCompatActivity() {
             rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            // send BYTE after
-            textView.text = currentText + "Forwards"
         }
         left.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -69,9 +86,6 @@ class MainActivity : AppCompatActivity() {
             rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            // send BYTE after
-            textView.text = currentText + "Left"
-            textView.setText("LEFT WAS PRESSED").toString()
         }
         right.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -81,8 +95,6 @@ class MainActivity : AppCompatActivity() {
             rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            // send BYTE after
-            textView.setText("RIGHT WAS PRESSED").toString()
         }
         rotateleft.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -92,8 +104,6 @@ class MainActivity : AppCompatActivity() {
             rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            // send BYTE after
-            textView.setText("ROTATE LEFT WAS PRESSED").toString()
         }
         rotateright.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -103,8 +113,6 @@ class MainActivity : AppCompatActivity() {
             rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            // send BYTE after
-            textView.setText("ROTATE RIGHT WAS PRESSED").toString()
         }
         stop.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -114,8 +122,6 @@ class MainActivity : AppCompatActivity() {
             rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-            // send BYTE after
-            textView.setText("STOP WAS PRESSED").toString()
         }
     }
 }
