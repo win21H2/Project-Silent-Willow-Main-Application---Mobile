@@ -165,23 +165,6 @@
         app:layout_constraintVertical_bias="0.05"
         app:rippleColor="@color/buttonclick" />
 
-    <Button
-        android:id="@+id/paireddevices"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="@string/listpaireddevices"
-        android:textAllCaps="false"
-        android:textColor="@color/main"
-        android:backgroundTint="#22272e"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/buttonclick" />
-
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
         android:layout_width="75dp"

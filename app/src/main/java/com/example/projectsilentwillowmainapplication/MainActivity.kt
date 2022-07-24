@@ -34,30 +34,18 @@ class MainActivity : AppCompatActivity() {
         val rotateright: Button = findViewById(R.id.rotateright)
         val stop: Button = findViewById(R.id.stop)
 
-        val connect: Button = findViewById(R.id.paireddevices)
-        val connect1: Button = findViewById(R.id.connect)
+        val connect: Button = findViewById(R.id.connect)
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
 
         connect.setOnClickListener {
-            if (bluetoothAdapter == null) {
-                Toast.makeText(this, "Bluetooth not supported", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Bluetooth supported", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        connect1.setOnClickListener {
             if (!bluetoothAdapter!!.isEnabled) {
-                Toast.makeText(this, "Bluetooth is off", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Bluetooth is already on", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Bluetooth is off\nTurning Bluetooth on...", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, "Bluetooth is on", Toast.LENGTH_SHORT).show()
             }
         }
-
-        // TODO: Make it so that when a user clicks one of the movement buttons, it A: sends a byte to PSW and B: displays a log of which button was pressed
-        // TODO: B: DISPLAY A LOG OF WHICH BUTTON WAS PRESSED UNDERNEATH THE SPEED CONTROL BAR ON IN A SEPARATE WINDOW
-        // TODO: HAVE TO SHOW A LIST OF PAIRED BT DEVICES IN A LIST VIEW
 
         backwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
