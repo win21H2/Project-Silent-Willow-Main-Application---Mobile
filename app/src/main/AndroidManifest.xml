@@ -19,7 +19,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/appicon192"
+        android:roundIcon="@mipmap/launchicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectSilentWillowMainApplication"
         tools:targetApi="31">
