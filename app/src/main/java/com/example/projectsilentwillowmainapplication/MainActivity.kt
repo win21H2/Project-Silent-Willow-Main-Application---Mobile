@@ -31,6 +31,13 @@ class MainActivity : AppCompatActivity() {
         val rotateright: Button = findViewById(R.id.rotateright)
         val stop: Button = findViewById(R.id.stop)
 
+        val textView = findViewById<android.widget.TextView>(R.id.teststatus)
+
+        // TODO: Make it so that when a user clicks one of the movement buttons, it A: sends a byte to PSW and B: displays a log of which button was pressed
+        // TODO: A: SEND A BYTE
+        // TODO: B: DISPLAY A LOG OF WHICH BUTTON WAS PRESSED UNDERNEATH THE SPEED CONTROL BAR ON IN A SEPARATE WINDOW
+
+
         backwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
             forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -40,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
             // send BYTE after
+            textView.setText("string").toString()
         }
         forwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))

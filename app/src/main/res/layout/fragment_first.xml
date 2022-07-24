@@ -37,70 +37,74 @@
 
     <Button
         android:id="@+id/forwards"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
-        android:shadowRadius="10"
         android:text="@string/uparrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/buttonclick" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/right"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginStart="12dp"
         android:backgroundTint="#22272e"
         android:text="@string/rightarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/horizontalScrollView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/buttonclick" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/rotateright"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginStart="12dp"
         android:backgroundTint="#22272e"
         android:text="@string/rotaterightarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintStart_toEndOf="@+id/backwards"
-        app:layout_constraintTop_toBottomOf="@+id/right"
-        app:rippleColor="@color/buttonclick" />
+        app:layout_constraintTop_toBottomOf="@+id/right" />
 
     <Button
         android:id="@+id/left"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginEnd="12dp"
         android:backgroundTint="#22272e"
         android:text="@string/leftarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/horizontalScrollView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/buttonclick" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/rotateleft"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginEnd="12dp"
         android:backgroundTint="#22272e"
         android:text="@string/rotateleftarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintEnd_toStartOf="@+id/backwards"
-        app:layout_constraintTop_toBottomOf="@+id/left"
-        app:rippleColor="@color/buttonclick" />
+        app:layout_constraintTop_toBottomOf="@+id/left" />
 
     <Button
         android:id="@+id/backwards"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
@@ -109,22 +113,21 @@
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-        app:rippleColor="@color/buttonclick" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
     <Button
         android:id="@+id/stop"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
         android:text="@string/stop"
         android:textColor="@color/main"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/backwards"
         app:layout_constraintEnd_toStartOf="@+id/right"
         app:layout_constraintStart_toEndOf="@+id/left"
-        app:layout_constraintTop_toBottomOf="@+id/forwards"
-        app:rippleColor="@color/buttonclick" />
+        app:layout_constraintTop_toBottomOf="@+id/forwards" />
 
     <Button
         android:id="@+id/connect"
@@ -184,6 +187,17 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintVertical_bias="0.9" />
+
+    <TextView
+        android:id="@+id/teststatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/teststring"
+        android:textColor="@color/main"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

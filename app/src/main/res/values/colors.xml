@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#DCDDDE</color>
-    <color name="buttonclick">#1ADCDDDE</color>
+    <color name="buttonclick">#0DDCDDDE</color>
     <color name="darkcolor">#22272E</color>
     <color name="moveactivated">#80DCDDDE</color>
     <color name="disconnected">#FF0000</color>
