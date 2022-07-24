@@ -1,18 +1,15 @@
 package com.example.projectsilentwillowmainapplication
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
@@ -21,38 +18,88 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
-
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        val backwards: Button = findViewById(R.id.backwards)
+        val forwards: Button = findViewById(R.id.forwards)
+        val left: Button = findViewById(R.id.left)
+        val right: Button = findViewById(R.id.right)
+        val rotateleft: Button = findViewById(R.id.rotateleft)
+        val rotateright: Button = findViewById(R.id.rotateright)
+        val stop: Button = findViewById(R.id.stop)
+
+        backwards.setOnClickListener {
+            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            // send BYTE after
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        forwards.setOnClickListener {
+            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            // send BYTE after
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+        left.setOnClickListener {
+            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            // send BYTE after
+        }
+        right.setOnClickListener {
+            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            // send BYTE after
+        }
+        rotateleft.setOnClickListener {
+            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            // send BYTE after
+        }
+        rotateright.setOnClickListener {
+            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            // send BYTE after
+        }
+        stop.setOnClickListener {
+            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            // send BYTE after
+        }
     }
 }
