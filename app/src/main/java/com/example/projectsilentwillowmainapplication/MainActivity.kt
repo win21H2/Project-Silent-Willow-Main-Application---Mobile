@@ -39,12 +39,8 @@ class MainActivity : AppCompatActivity() {
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
 
         connect.setOnClickListener {
-            if (!bluetoothAdapter!!.isEnabled) {
-                Toast.makeText(this, "Bluetooth is off\nTurning Bluetooth on...", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                Toast.makeText(this, "Bluetooth is on", Toast.LENGTH_SHORT).show()
-            }
+            if (!bluetoothAdapter!!.isEnabled) { Toast.makeText(this, "Bluetooth is off\nTurning Bluetooth on...", Toast.LENGTH_SHORT).show() }
+            else { Toast.makeText(this, "Bluetooth is on", Toast.LENGTH_SHORT).show() }
         }
 
         backwards.setOnClickListener {
