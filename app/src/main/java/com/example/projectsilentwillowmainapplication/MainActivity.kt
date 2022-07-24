@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         // TODO: Make it so that when a user clicks one of the movement buttons, it A: sends a byte to PSW and B: displays a log of which button was pressed
-        // TODO: A: SEND A BYTE
         // TODO: B: DISPLAY A LOG OF WHICH BUTTON WAS PRESSED UNDERNEATH THE SPEED CONTROL BAR ON IN A SEPARATE WINDOW
         // TODO: HAVE TO SHOW A LIST OF PAIRED BT DEVICES IN A LIST VIEW
 
