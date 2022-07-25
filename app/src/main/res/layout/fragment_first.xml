@@ -121,18 +121,15 @@
         android:text="@string/stop"
         android:textColor="@color/main"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/backwards"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/left"
-        app:layout_constraintTop_toBottomOf="@+id/forwards" />
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
+        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView" />
 
     <Button
         android:id="@+id/forwards"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="4dp"
         android:backgroundTint="#22272e"
         android:text="@string/uparrow"
         android:textColor="@color/main"
@@ -150,29 +147,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.631">
+    </HorizontalScrollView>
 
     <Button
         android:id="@+id/right"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:backgroundTint="#22272e"
         android:text="@string/rightarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/horizontalScrollView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView3" />
 
     <Button
         android:id="@+id/backwards"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="4dp"
         android:backgroundTint="#22272e"
         android:text="@string/downarrow"
         android:textColor="@color/main"
@@ -186,8 +181,7 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
         android:backgroundTint="#22272e"
         android:text="@string/rotaterightarrow"
         android:textColor="@color/main"
@@ -205,17 +199,14 @@
         android:text="@string/leftarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/horizontalScrollView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
 
     <Button
         android:id="@+id/rotateleft"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="#22272e"
         android:text="@string/rotateleftarrow"
@@ -228,15 +219,41 @@
         android:id="@+id/listbt"
         android:layout_width="250dp"
         android:layout_height="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="56dp"
         android:scrollbars="vertical"
         android:text=""
         android:textColor="@color/main"
-        app:layout_constraintBottom_toTopOf="@+id/forwards"
         app:layout_constraintEnd_toStartOf="@+id/disableBT"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toEndOf="@+id/enableBT"
-        app:layout_constraintTop_toBottomOf="@+id/startBTscan"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintTop_toBottomOf="@+id/startBTscan" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/forwards"
+        app:layout_constraintTop_toTopOf="@+id/forwards">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView3"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/forwards"
+        app:layout_constraintTop_toTopOf="@+id/forwards">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

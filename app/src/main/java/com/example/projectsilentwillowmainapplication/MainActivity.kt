@@ -73,10 +73,18 @@ class MainActivity : AppCompatActivity() {
         startbtscan.setOnClickListener {
             val pairedDevices = bluetoothAdapter?.bondedDevices
             val list = ArrayList<String>()
-            for (device in pairedDevices!!) {
-                list.add(device.name + " : " + device.address + "\n")
+            if (bluetoothAdapter?.isEnabled == false) {
+                Toast.makeText(this, "Please turn on Bluetooth", Toast.LENGTH_SHORT).show()
+            } else {
+                if (pairedDevices?.isNotEmpty() == true) {
+                    for (device in pairedDevices) {
+                        list.add(device.name + "\n" + device.address)
+                    }
+                    listbt.text = list.toString()
+                } else {
+                    Toast.makeText(this, "No paired devices", Toast.LENGTH_SHORT).show()
+                }
             }
-            listbt.text = list.toString()
         }
 
         backwards.setOnClickListener {
