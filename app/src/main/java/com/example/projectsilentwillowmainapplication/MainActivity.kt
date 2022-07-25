@@ -78,13 +78,23 @@ class MainActivity : AppCompatActivity() {
             } else {
                 if (pairedDevices?.isNotEmpty() == true) {
                     for (device in pairedDevices) {
-                        list.add(device.name + "\n" + device.address)
+                        if (device.name == "HC-05") {
+                            if (device.address == "98:D3:71:FE:13:4D") {
+                                list.add("\n" + device.name + " @ " + device.address + "\n")
+                            }
+                        }
                     }
                     listbt.text = list.toString()
                 } else {
                     Toast.makeText(this, "No paired devices", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        // make the text inside "listbt" clickable
+        listbt.setOnClickListener {
+            //change the color of the text
+            listbt.setTextColor(ContextCompat.getColor(this, R.color.darkcolor))
         }
 
         backwards.setOnClickListener {
