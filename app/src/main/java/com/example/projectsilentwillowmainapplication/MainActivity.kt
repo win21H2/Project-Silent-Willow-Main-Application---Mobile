@@ -34,29 +34,47 @@ class MainActivity : AppCompatActivity() {
         val rotateright: Button = findViewById(R.id.rotateright)
         val stop: Button = findViewById(R.id.stop)
 
+        val enablebt: Button = findViewById(R.id.enableBT)
+        val disablebt: Button = findViewById(R.id.disableBT)
 
-        val connect: Button = findViewById(R.id.connect)
+        val connectbt: Button = findViewById(R.id.connect)
+        val disconnectbt: Button = findViewById(R.id.disconnect)
+
+        val startbtscan: Button = findViewById(R.id.startBTscan)
+        val stopbtscan: Button = findViewById(R.id.stopBTscan)
+
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
 
-        /*requestpermission.setOnClickListener {
+        enablebt.setOnClickListener {
             ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT)
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
                 bluetoothAdapter?.enable()
-                Toast.makeText(this, "Bluetooth permissions have already been granted!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Bluetooth has been turned on", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Please enable Bluetooth permissions to control Project Silent Willow!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please allow Bluetooth permissions", Toast.LENGTH_SHORT).show()
                 requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
             }
-        }*/
-
-        connect.setOnClickListener {
-            if (!bluetoothAdapter!!.isEnabled) {
-                Toast.makeText(this, "Bluetooth is off!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Bluetooth is already on!", Toast.LENGTH_SHORT).show()
-            }
         }
+
+        disablebt.setOnClickListener {
+            bluetoothAdapter?.disable()
+            Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
+        }
+
+        connectbt.setOnClickListener {
+            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+        }
+        disconnectbt.setOnClickListener {
+            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+        }
+        startbtscan.setOnClickListener {
+            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+        }
+        stopbtscan.setOnClickListener {
+            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+        }
+
         //TODO: IF THE USER CLICKS ENABLEBT AND THE PERM IS NOT ALREADY GRANTED, ASK THE USER TO GRANT ACCESS
         //TODO: MAYBE BRING THE SUER TO A NEW PAGE WITH ALL OF THE BLUETOOTH RELATED BUTTONS ALTHOUGH IT MIGHT BE HARD TO PASS DATA FROM THE BT SCREEN TO THE MAIN SCREEN
 
