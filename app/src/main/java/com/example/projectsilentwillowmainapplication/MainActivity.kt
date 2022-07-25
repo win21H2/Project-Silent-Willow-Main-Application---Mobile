@@ -1,7 +1,9 @@
 package com.example.projectsilentwillowmainapplication
 
+// BLUETOOTH
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
+// BLUETOOTH
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -61,7 +63,12 @@ class MainActivity : AppCompatActivity() {
 
         connectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
         disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
-        startbtscan.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
+
+        startbtscan.setOnClickListener {
+            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+            //TODO: WORK ON THIS SECTION TMMRW INIT LISTING OUT THE PAIRED DEVICES
+        }
+
         stopbtscan.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
 
         //TODO: MAYBE BRING THE SUER TO A NEW PAGE WITH ALL OF THE BLUETOOTH RELATED BUTTONS ALTHOUGH IT MIGHT BE HARD TO PASS DATA FROM THE BT SCREEN TO THE MAIN SCREEN
