@@ -34,23 +34,31 @@ class MainActivity : AppCompatActivity() {
         val rotateright: Button = findViewById(R.id.rotateright)
         val stop: Button = findViewById(R.id.stop)
 
+
         val connect: Button = findViewById(R.id.connect)
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
 
+        /*requestpermission.setOnClickListener {
+            ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT)
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                bluetoothAdapter?.enable()
+                Toast.makeText(this, "Bluetooth permissions have already been granted!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Please enable Bluetooth permissions to control Project Silent Willow!", Toast.LENGTH_SHORT).show()
+                requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
+            }
+        }*/
+
         connect.setOnClickListener {
             if (!bluetoothAdapter!!.isEnabled) {
-                ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT)
-                if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "Turning Bluetooth on now...", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Bluetooth is not enabled", Toast.LENGTH_SHORT).show()
-                }
-            }
-            else {
+                Toast.makeText(this, "Bluetooth is off!", Toast.LENGTH_SHORT).show()
+            } else {
                 Toast.makeText(this, "Bluetooth is already on!", Toast.LENGTH_SHORT).show()
             }
         }
+        //TODO: IF THE USER CLICKS ENABLEBT AND THE PERM IS NOT ALREADY GRANTED, ASK THE USER TO GRANT ACCESS
+        //TODO: MAYBE BRING THE SUER TO A NEW PAGE WITH ALL OF THE BLUETOOTH RELATED BUTTONS ALTHOUGH IT MIGHT BE HARD TO PASS DATA FROM THE BT SCREEN TO THE MAIN SCREEN
 
         backwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))

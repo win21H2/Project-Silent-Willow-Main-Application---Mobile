@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/forwards"
-        style="?android:attr/borderlessButtonStyle"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/right"
-        style="?android:attr/borderlessButtonStyle"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="12dp"
@@ -64,7 +64,7 @@
 
     <Button
         android:id="@+id/rotateright"
-        style="?android:attr/borderlessButtonStyle"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="12dp"
@@ -77,7 +77,7 @@
 
     <Button
         android:id="@+id/left"
-        style="?android:attr/borderlessButtonStyle"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginEnd="12dp"
@@ -91,7 +91,7 @@
 
     <Button
         android:id="@+id/rotateleft"
-        style="?android:attr/borderlessButtonStyle"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginEnd="12dp"
@@ -104,7 +104,7 @@
 
     <Button
         android:id="@+id/backwards"
-        style="?android:attr/borderlessButtonStyle"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
@@ -117,7 +117,7 @@
 
     <Button
         android:id="@+id/stop"
-        style="?android:attr/borderlessButtonStyle"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
@@ -134,17 +134,15 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#22272e"
         android:text="@string/connect"
         android:textAllCaps="false"
         android:textColor="@color/main"
         android:textSize="11sp"
-        app:layout_constraintBottom_toTopOf="@+id/forwards"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/connectionwarning"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="@color/buttonclick" />
 
     <Button
@@ -152,18 +150,76 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
         android:backgroundTint="#22272e"
         android:text="@string/disconnect"
         android:textAllCaps="false"
         android:textColor="@color/main"
         android:textSize="11sp"
-        app:layout_constraintBottom_toTopOf="@+id/forwards"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/connectionwarning"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="@color/buttonclick" />
+
+    <Button
+        android:id="@+id/startBTscan"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#22272e"
+        android:text="@string/startbtscan"
+        android:textAllCaps="false"
+        android:textColor="@color/main"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/connect"
+        app:layout_constraintStart_toStartOf="@+id/connect"
+        app:layout_constraintTop_toBottomOf="@+id/connect"
+        app:rippleColor="@color/buttonclick" />
+
+    <Button
+        android:id="@+id/stopBTscan"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#22272e"
+        android:text="@string/stopbtscan"
+        android:textAllCaps="false"
+        android:textColor="@color/main"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/disconnect"
+        app:layout_constraintStart_toStartOf="@+id/disconnect"
+        app:layout_constraintTop_toBottomOf="@+id/disconnect"
+        app:rippleColor="@color/buttonclick" />
+
+    <Button
+        android:id="@+id/enableBT"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#22272e"
+        android:text="@string/enablebt"
+        android:textAllCaps="false"
+        android:textColor="@color/main"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/buttonclick" />
+
+    <Button
+        android:id="@+id/disableBT"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#22272e"
+        android:text="@string/disablebt"
+        android:textAllCaps="false"
+        android:textColor="@color/main"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/enableBT"
+        app:layout_constraintStart_toStartOf="@+id/enableBT"
+        app:layout_constraintTop_toBottomOf="@+id/enableBT" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
@@ -174,18 +230,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/testtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/teststring"
-        android:textAllCaps="false"
-        android:textColor="@color/main"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backwards" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
