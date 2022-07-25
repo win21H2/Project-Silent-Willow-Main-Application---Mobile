@@ -36,10 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         val enablebt: Button = findViewById(R.id.enableBT)
         val disablebt: Button = findViewById(R.id.disableBT)
-
         val connectbt: Button = findViewById(R.id.connect)
         val disconnectbt: Button = findViewById(R.id.disconnect)
-
         val startbtscan: Button = findViewById(R.id.startBTscan)
         val stopbtscan: Button = findViewById(R.id.stopBTscan)
 
@@ -56,26 +54,16 @@ class MainActivity : AppCompatActivity() {
                 requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
             }
         }
-
         disablebt.setOnClickListener {
             bluetoothAdapter?.disable()
             Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
         }
 
-        connectbt.setOnClickListener {
-            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
-        }
-        disconnectbt.setOnClickListener {
-            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
-        }
-        startbtscan.setOnClickListener {
-            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
-        }
-        stopbtscan.setOnClickListener {
-            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
-        }
+        connectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
+        disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
+        startbtscan.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
+        stopbtscan.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
 
-        //TODO: IF THE USER CLICKS ENABLEBT AND THE PERM IS NOT ALREADY GRANTED, ASK THE USER TO GRANT ACCESS
         //TODO: MAYBE BRING THE SUER TO A NEW PAGE WITH ALL OF THE BLUETOOTH RELATED BUTTONS ALTHOUGH IT MIGHT BE HARD TO PASS DATA FROM THE BT SCREEN TO THE MAIN SCREEN
 
         backwards.setOnClickListener {
