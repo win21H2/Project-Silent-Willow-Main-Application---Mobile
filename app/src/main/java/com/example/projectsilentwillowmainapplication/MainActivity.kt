@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothManager
 // BLUETOOTH
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -13,6 +14,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
+import android.text.method.ScrollingMovementMethod
+
+
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -41,7 +46,8 @@ class MainActivity : AppCompatActivity() {
         val connectbt: Button = findViewById(R.id.connect)
         val disconnectbt: Button = findViewById(R.id.disconnect)
         val startbtscan: Button = findViewById(R.id.startBTscan)
-        val stopbtscan: Button = findViewById(R.id.stopBTscan)
+        val listbt: TextView = findViewById(R.id.listbt)
+        listbt.movementMethod = ScrollingMovementMethod()
 
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
@@ -65,13 +71,13 @@ class MainActivity : AppCompatActivity() {
         disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
 
         startbtscan.setOnClickListener {
-            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
-            //TODO: WORK ON THIS SECTION TMMRW INIT LISTING OUT THE PAIRED DEVICES
+            val pairedDevices = bluetoothAdapter?.bondedDevices
+            val list = ArrayList<String>()
+            for (device in pairedDevices!!) {
+                list.add(device.name + " : " + device.address + "\n")
+            }
+            listbt.text = list.toString()
         }
-
-        stopbtscan.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
-
-        //TODO: MAYBE BRING THE SUER TO A NEW PAGE WITH ALL OF THE BLUETOOTH RELATED BUTTONS ALTHOUGH IT MIGHT BE HARD TO PASS DATA FROM THE BT SCREEN TO THE MAIN SCREEN
 
         backwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))

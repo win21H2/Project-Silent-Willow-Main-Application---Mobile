@@ -18,6 +18,7 @@
 
     <string name="startbtscan">Start scan</string>
     <string name="stopbtscan">Stop scan</string>
-    <string name="enablebt">Enable Bluetooth</string>
-    <string name="disablebt">Disable Bluetooth</string>
+    <string name="enablebt">Turn BT on</string>
+    <string name="disablebt">Turn BT off</string>
+    <string name="listbt">.</string>
 </resources>
