@@ -19,5 +19,4 @@
     <string name="stopbtscan">Stop scan</string>
     <string name="enablebt">Turn BT on</string>
     <string name="disablebt">Turn BT off</string>
-    <string name="listbt">.</string>
 </resources>

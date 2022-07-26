@@ -68,10 +68,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
         }
 
-        // connect/disconnect BT devices
-        connectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
-        disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
-
         // scan BT devices
         startbtscan.setOnClickListener {
             val pairedDevices = bluetoothAdapter?.bondedDevices
@@ -93,82 +89,114 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        /*
+        TODO: try to check if the name is "HC-05" and the address is "98:D3:71:FE:13:4D" and then change the color to an example red color
+        TODO: Try to make it so that when the user clicks the connect button, it will not only connect
+        TODO: to the HC-05 but it will also change the color of the connection status bar to green
+        TODO: it will also hide the paired devices section and if the user clicks the connect button
+        TODO: again, it will return a toast which has something like you are already connected to the HC-05
+        */
 
-        //TODO: check when the user clicks a direction button but Bluetooth is not turned on, make a toast w/ an error message
+
+        // connect/disconnect/list BT devices
+        connectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
+        disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
 
         listbt.setOnClickListener {
-            // make a toast with what the user clicked on
-            val text = listbt.text.toString()
-            val index = listbt.text.indexOf(text)
-            val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
-            toast.show()
-
-            //Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
         }
 
-
+        // movement button code
         backwards.setOnClickListener {
-            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            if (bluetoothAdapter?.isEnabled == true) {
+                backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+                forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            } else {
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
+            }
         }
         forwards.setOnClickListener {
-            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            if (bluetoothAdapter?.isEnabled == true) {
+                backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+                left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            } else {
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
+            }
         }
         left.setOnClickListener {
-            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            if (bluetoothAdapter?.isEnabled == true) {
+                backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                left.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+                right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            } else {
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
+            }
         }
         right.setOnClickListener {
-            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            if (bluetoothAdapter?.isEnabled == true) {
+                backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                right.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+                rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            } else {
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
+            }
         }
         rotateleft.setOnClickListener {
-            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            if (bluetoothAdapter?.isEnabled == true) {
+                backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+                rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            } else {
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
+            }
         }
         rotateright.setOnClickListener {
-            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            if (bluetoothAdapter?.isEnabled == true) {
+                backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+                stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+            } else {
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
+            }
         }
         stop.setOnClickListener {
-            backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-            stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            if (bluetoothAdapter?.isEnabled == true) {
+                backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+            } else {
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
