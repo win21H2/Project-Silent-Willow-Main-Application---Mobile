@@ -11,12 +11,11 @@
     <string name="stop">STOP</string>
 
     <string name="connectionStatus">----------------------------------------------------------------------------</string>
-    <string name="connectionWarning">Please use the UUID 98:D3:71:FE:13:4D to connect to Project Silent Willow</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
     <string name="requestbtperms">Req BT perms</string>
 
-    <string name="startbtscan">Start scan</string>
+    <string name="startbtscan">Paired devices</string>
     <string name="stopbtscan">Stop scan</string>
     <string name="enablebt">Turn BT on</string>
     <string name="disablebt">Turn BT off</string>

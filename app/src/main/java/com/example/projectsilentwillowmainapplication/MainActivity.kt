@@ -1,6 +1,5 @@
 package com.example.projectsilentwillowmainapplication
 
-// BLUETOOTH
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 // BLUETOOTH
@@ -15,9 +14,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
 import android.text.method.ScrollingMovementMethod
-
-
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -52,11 +48,16 @@ class MainActivity : AppCompatActivity() {
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
 
+        // turn on/off BT
         enablebt.setOnClickListener {
             ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT)
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
                 bluetoothAdapter?.enable()
-                Toast.makeText(this, "Bluetooth has been turned on", Toast.LENGTH_SHORT).show()
+                if (bluetoothAdapter?.isEnabled == true) {
+                    Toast.makeText(this, "Bluetooth has already been turned on", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Bluetooth is now turned on", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "Please allow Bluetooth permissions", Toast.LENGTH_SHORT).show()
                 requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
@@ -67,9 +68,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
         }
 
+        // connect/disconnect BT devices
         connectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
         disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
 
+        // scan BT devices
         startbtscan.setOnClickListener {
             val pairedDevices = bluetoothAdapter?.bondedDevices
             val list = ArrayList<String>()
@@ -80,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                     for (device in pairedDevices) {
                         if (device.name == "HC-05") {
                             if (device.address == "98:D3:71:FE:13:4D") {
-                                list.add("\n" + device.name + " @ " + device.address + "\n")
+                                list.add(device.name + " @ " + device.address)
                             }
                         }
                     }
@@ -91,11 +94,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // make the text inside "listbt" clickable
+        //TODO: check when the user clicks a direction button but Bluetooth is not turned on, make a toast w/ an error message
+
         listbt.setOnClickListener {
-            //change the color of the text
-            listbt.setTextColor(ContextCompat.getColor(this, R.color.darkcolor))
+            // make a toast with what the user clicked on
+            val text = listbt.text.toString()
+            val index = listbt.text.indexOf(text)
+            val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+            toast.show()
+
+            //Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
         }
+
 
         backwards.setOnClickListener {
             backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
