@@ -99,7 +99,9 @@ class MainActivity : AppCompatActivity() {
 
 
         // connect/disconnect/list BT devices
-        connectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
+        connectbt.setOnClickListener {
+
+        }
         disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
 
         listbt.setOnClickListener {
