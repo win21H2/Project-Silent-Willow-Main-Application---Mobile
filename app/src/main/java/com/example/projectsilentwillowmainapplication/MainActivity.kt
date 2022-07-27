@@ -1,6 +1,5 @@
 package com.example.projectsilentwillowmainapplication
 
-// BLUETOOTH
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.os.Bundle
@@ -20,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     //val SERVICE_ID = "00001101-0000-1000-8000-00805f9b34fb" //SPP UUID
     //val SERVICE_ADDRESS = "98:D3:31:FB:82:85" // HC-05 BT ADDRESS
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
 
-        // turn on/off BT
         enablebt.setOnClickListener {
             ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT)
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
@@ -71,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
         }
 
-        // scan BT devices
         startbtscan.setOnClickListener {
             val pairedDevices = bluetoothAdapter?.bondedDevices
             val list = ArrayList<String>()
@@ -82,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                     for (device in pairedDevices) {
                         if (device.name == "HC-05") {
                             if (device.address == "98:D3:71:FE:13:4D") {
-                                list.add(device.name + " @ " + device.address)
+                                list.add(device.name + " @ " + device.address + " : " + device.uuids)
                             }
                         }
                     }
@@ -92,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
         /*
         TODO: try to check if the name is "HC-05" and the address is "98:D3:71:FE:13:4D" and then change the color to an example red color
         TODO: Try to make it so that when the user clicks the connect button, it will not only connect
@@ -101,20 +98,19 @@ class MainActivity : AppCompatActivity() {
         TODO: look through here: https://developer.android.com/guide/topics/connectivity/bluetooth/connect-bluetooth-devices
         */
 
-
-        // connect/disconnect/list BT devices
         connectbt.setOnClickListener {
 
         }
-        disconnectbt.setOnClickListener { Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show() }
-
+        disconnectbt.setOnClickListener {
+            Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+        }
         listbt.setOnClickListener {
             Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
         }
 
-        // movement button code
         backwards.setOnClickListener {
             if (bluetoothAdapter?.isEnabled == true) {
+                //TODO: also check if the phone is connected to the BT module
                 backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
                 forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -137,9 +133,7 @@ class MainActivity : AppCompatActivity() {
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 // SEND BYTE 2
-            } else {
-                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
-            }
+            } else { Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show() }
         }
         left.setOnClickListener {
             if (bluetoothAdapter?.isEnabled == true) {
@@ -151,9 +145,7 @@ class MainActivity : AppCompatActivity() {
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 // SEND BYTE 4
-            } else {
-                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
-            }
+            } else {Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show() }
         }
         right.setOnClickListener {
             if (bluetoothAdapter?.isEnabled == true) {
@@ -165,10 +157,7 @@ class MainActivity : AppCompatActivity() {
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 // SEND BYTE 5
-            } else {
-                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
-            }
-        }
+            } else { Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show() } }
         rotateleft.setOnClickListener {
             if (bluetoothAdapter?.isEnabled == true) {
                 backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
@@ -180,8 +169,7 @@ class MainActivity : AppCompatActivity() {
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 // SEND BYTE 9
             } else {
-                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
-            }
+                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()}
         }
         rotateright.setOnClickListener {
             if (bluetoothAdapter?.isEnabled == true) {
@@ -193,9 +181,7 @@ class MainActivity : AppCompatActivity() {
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 // SEND BYTE 10
-            } else {
-                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
-            }
+            } else { Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show() }
         }
         stop.setOnClickListener {
             if (bluetoothAdapter?.isEnabled == true) {
@@ -207,9 +193,7 @@ class MainActivity : AppCompatActivity() {
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
                 // SEND BYTE 0
-            } else {
-                Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
-            }
+            } else { Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show() }
         }
     }
 }
