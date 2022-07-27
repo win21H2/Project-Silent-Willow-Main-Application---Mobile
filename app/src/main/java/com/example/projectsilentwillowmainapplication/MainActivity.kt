@@ -1,9 +1,10 @@
 package com.example.projectsilentwillowmainapplication
 
+// BLUETOOTH
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
-// BLUETOOTH
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -13,11 +14,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
-import android.text.method.ScrollingMovementMethod
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    //val SERVICE_ID = "00001101-0000-1000-8000-00805f9b34fb" //SPP UUID
+    //val SERVICE_ADDRESS = "98:D3:31:FB:82:85" // HC-05 BT ADDRESS
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,6 +98,7 @@ class MainActivity : AppCompatActivity() {
         TODO: to the HC-05 but it will also change the color of the connection status bar to green
         TODO: it will also hide the paired devices section and if the user clicks the connect button
         TODO: again, it will return a toast which has something like you are already connected to the HC-05
+        TODO: look through here: https://developer.android.com/guide/topics/connectivity/bluetooth/connect-bluetooth-devices
         */
 
 
@@ -118,6 +122,7 @@ class MainActivity : AppCompatActivity() {
                 rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                // SEND BYTE 7
             } else {
                 Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
             }
@@ -131,6 +136,7 @@ class MainActivity : AppCompatActivity() {
                 rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                // SEND BYTE 2
             } else {
                 Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
             }
@@ -144,6 +150,7 @@ class MainActivity : AppCompatActivity() {
                 rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                // SEND BYTE 4
             } else {
                 Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
             }
@@ -157,6 +164,7 @@ class MainActivity : AppCompatActivity() {
                 rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                // SEND BYTE 5
             } else {
                 Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
             }
@@ -170,6 +178,7 @@ class MainActivity : AppCompatActivity() {
                 rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                // SEND BYTE 9
             } else {
                 Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
             }
@@ -183,6 +192,7 @@ class MainActivity : AppCompatActivity() {
                 rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
+                // SEND BYTE 10
             } else {
                 Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
             }
@@ -196,6 +206,7 @@ class MainActivity : AppCompatActivity() {
                 rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
                 stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
+                // SEND BYTE 0
             } else {
                 Toast.makeText(this, "ERROR 110", Toast.LENGTH_SHORT).show()
             }
