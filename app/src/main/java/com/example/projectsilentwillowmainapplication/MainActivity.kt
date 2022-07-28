@@ -45,6 +45,12 @@ class MainActivity : AppCompatActivity() {
         connectbt.setOnClickListener {connectbt()}
         disconnectbt.setOnClickListener {disconnectbt()}
 
+        /*
+        * TODO
+        *  - Add a toggle button system which allows the user to toggle on/off an action
+        *  - Reformat the code so that it is a bit cleaner for example by separating the movement code into separate private functions
+        * */
+
         stop.setOnClickListener {
             if (m_btSocket != null) {
                 val bytes = byteArrayOf(0.toByte())

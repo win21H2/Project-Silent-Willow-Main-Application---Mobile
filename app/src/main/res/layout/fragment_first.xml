@@ -94,6 +94,18 @@
         app:layout_constraintStart_toStartOf="@+id/disconnect"
         app:layout_constraintTop_toBottomOf="@+id/disconnect" />
 
+    <ToggleButton
+        android:id="@+id/button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#22272e"
+        android:textColor="@color/main"
+        android:textOff="@string/uparrow"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/forwards"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/stop"
         style="?attr/materialButtonOutlinedStyle"
