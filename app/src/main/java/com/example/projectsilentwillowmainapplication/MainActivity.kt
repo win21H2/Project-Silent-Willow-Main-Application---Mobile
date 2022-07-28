@@ -35,10 +35,12 @@ class MainActivity : AppCompatActivity() {
         val enablebt: Button = findViewById(R.id.enableBT)
         val disablebt: Button = findViewById(R.id.disableBT)
         val connectbt: Button = findViewById(R.id.connect)
+        val disconnectbt: Button = findViewById(R.id.disconnect)
 
         enablebt.setOnClickListener {enablebt()}
         disablebt.setOnClickListener {disablebt()}
         connectbt.setOnClickListener {connectbt()}
+        disconnectbt.setOnClickListener {disconnectbt()}
 
         backwards.setOnClickListener {
 
@@ -98,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                                     val uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
                                     m_btSocket = m_device.createRfcommSocketToServiceRecord(uuid)
                                     m_btSocket?.connect()
-                                    connectionstatus.text = "Connected"
+                                    connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.connected))
                                     Toast.makeText(this, "Connected to HC-05", Toast.LENGTH_SHORT).show()
                                 }
                             }
@@ -106,6 +108,15 @@ class MainActivity : AppCompatActivity() {
                     } else { Toast.makeText(this, "No paired devices", Toast.LENGTH_SHORT).show() }
                 }
       } catch (e: Exception) { Toast.makeText(this, "Error connecting to device", Toast.LENGTH_SHORT).show() }
+    }
+
+    private fun disconnectbt() {
+        val connectionstatus: TextView = findViewById(R.id.connectionstatus)
+        try {
+            m_btSocket?.close()
+            Toast.makeText(this, "Disconnected from HC-05", Toast.LENGTH_SHORT).show()
+            connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.disconnected))
+        } catch (e: Exception) { Toast.makeText(this, "Error disconnecting from device", Toast.LENGTH_SHORT).show() }
     }
 
     private fun disablebt() {

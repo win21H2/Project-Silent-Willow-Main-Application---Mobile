@@ -94,7 +94,6 @@
         app:layout_constraintStart_toStartOf="@+id/disconnect"
         app:layout_constraintTop_toBottomOf="@+id/disconnect" />
 
-
     <Button
         android:id="@+id/stop"
         style="?attr/materialButtonOutlinedStyle"
