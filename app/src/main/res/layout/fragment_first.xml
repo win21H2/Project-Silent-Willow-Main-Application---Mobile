@@ -7,25 +7,38 @@
     android:background="@color/darkcolor"
     tools:context=".FirstFragment">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/emptycontent"
+        android:src="@drawable/launchicon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/connectionstatus"
         android:layout_width="397dp"
         android:layout_height="15dp"
+        android:layout_marginBottom="0dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/connectionStatus"
         android:textColor="@color/disconnected"
         android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/connect"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#22272e"
         android:text="@string/connect"
@@ -40,9 +53,9 @@
         android:id="@+id/disconnect"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#22272e"
         android:text="@string/disconnect"
         android:textAllCaps="false"
@@ -53,26 +66,10 @@
         app:rippleColor="@color/buttonclick" />
 
     <Button
-        android:id="@+id/startBTscan"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#22272e"
-        android:text="@string/startbtscan"
-        android:textAllCaps="false"
-        android:textColor="@color/main"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toStartOf="@+id/disconnect"
-        app:layout_constraintStart_toEndOf="@+id/connect"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:rippleColor="@color/buttonclick" />
-
-    <Button
         android:id="@+id/enableBT"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:backgroundTint="#22272e"
         android:text="@string/enablebt"
         android:textAllCaps="false"
@@ -87,7 +84,7 @@
         android:id="@+id/disableBT"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:backgroundTint="#22272e"
         android:text="@string/disablebt"
         android:textAllCaps="false"
@@ -96,6 +93,7 @@
         app:layout_constraintEnd_toEndOf="@+id/disconnect"
         app:layout_constraintStart_toStartOf="@+id/disconnect"
         app:layout_constraintTop_toBottomOf="@+id/disconnect" />
+
 
     <Button
         android:id="@+id/stop"
@@ -188,21 +186,6 @@
         app:layout_constraintEnd_toStartOf="@+id/backwards"
         app:layout_constraintTop_toBottomOf="@+id/left" />
 
-    <TextView
-        android:id="@+id/listbt"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:textAlignment="center"
-        android:fadeScrollbars="true"
-        android:scrollbars="vertical"
-        android:text=""
-        android:textColor="@color/main"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/disableBT" />
-
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
         android:layout_width="75dp"
@@ -213,5 +196,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.631" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/license"
+        android:textColor="@color/main"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
