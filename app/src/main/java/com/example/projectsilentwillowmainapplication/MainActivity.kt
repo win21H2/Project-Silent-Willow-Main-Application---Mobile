@@ -9,10 +9,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
+import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    companion object {
+        var m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+        var m_btSocket: BluetoothSocket? = null
+        lateinit var m_btAdapter: BluetoothAdapter
+        lateinit var m_device: BluetoothDevice
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val enablebt: Button = findViewById(R.id.enableBT)
         val disablebt: Button = findViewById(R.id.disableBT)
         val connectbt: Button = findViewById(R.id.connect)
-        val disconnectbt: Button = findViewById(R.id.disconnect)
+        //val disconnectbt: Button = findViewById(R.id.disconnect)
         val startbtscan: Button = findViewById(R.id.startBTscan)
 
         val listbt: TextView = findViewById(R.id.listbt)
@@ -41,8 +49,8 @@ class MainActivity : AppCompatActivity() {
         startbtscan.setOnClickListener {startbtscan()}
         disablebt.setOnClickListener {disablebt()}
         connectbt.setOnClickListener {connectbt()}
-        disconnectbt.setOnClickListener {disconnectbt()}
-        listbt.setOnClickListener {listbt()}
+        //disconnectbt.setOnClickListener {disconnectbt()}
+        //listbt.setOnClickListener {listbt()}
 
         backwards.setOnClickListener {
 
@@ -111,15 +119,37 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun disconnectbt() {
-        Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
-    }
-    private fun listbt() {
-        Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
-    }
+
     private fun connectbt() {
-        Toast.makeText(this, "Sorry, nothing here yet!", Toast.LENGTH_SHORT).show()
+      try {
+          val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
+          val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
+          if (bluetoothAdapter?.isEnabled == false) {
+              Toast.makeText(this, "Please turn on Bluetooth", Toast.LENGTH_SHORT).show()
+                } else {
+                    val pairedDevices = bluetoothAdapter?.bondedDevices
+                    if (pairedDevices?.isNotEmpty() == true) {
+                        for (device in pairedDevices) {
+                            if (device.name == "HC-05") {
+                                if (device.address == "98:D3:71:FE:13:4D") {
+                                    m_device = device
+                                    val uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+                                    m_btSocket = m_device.createRfcommSocketToServiceRecord(uuid)
+                                    m_btSocket?.connect()
+                                    Toast.makeText(this, "Connected to HC-05", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    } else {
+                        Toast.makeText(this, "No paired devices", Toast.LENGTH_SHORT).show()
+                    }
+                }
+      } catch (e: Exception) {
+          Toast.makeText(this, "Error connecting to device", Toast.LENGTH_SHORT).show()
+      }
+
     }
+
     private fun disablebt() {
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
