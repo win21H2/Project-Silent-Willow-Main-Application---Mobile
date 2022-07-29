@@ -47,13 +47,8 @@ class MainActivity : AppCompatActivity() {
                 if (m_btSocket != null) {
                     val bytes = byteArrayOf(1.toByte())
                     m_btSocket?.outputStream?.write(bytes)
-                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
-            } else {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(0.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                }
-            }
+                } else { socketerror() }
+            } else { sendbytestop() }
         }
 
         forwards.setOnCheckedChangeListener { _, isChecked ->
@@ -61,13 +56,8 @@ class MainActivity : AppCompatActivity() {
                 if (m_btSocket != null) {
                     val bytes = byteArrayOf(2.toByte())
                     m_btSocket?.outputStream?.write(bytes)
-                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
-            } else {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(0.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                }
-            }
+                } else { socketerror() }
+            } else { sendbytestop() }
         }
 
         left.setOnCheckedChangeListener { _, isChecked ->
@@ -75,13 +65,8 @@ class MainActivity : AppCompatActivity() {
                 if (m_btSocket != null) {
                     val bytes = byteArrayOf(3.toByte())
                     m_btSocket?.outputStream?.write(bytes)
-                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
-            } else {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(0.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                }
-            }
+                } else { socketerror() }
+            } else { sendbytestop() }
         }
 
         right.setOnCheckedChangeListener { _, isChecked ->
@@ -89,13 +74,8 @@ class MainActivity : AppCompatActivity() {
                 if (m_btSocket != null) {
                     val bytes = byteArrayOf(4.toByte())
                     m_btSocket?.outputStream?.write(bytes)
-                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
-            } else {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(0.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                }
-            }
+                } else { socketerror() }
+            } else { sendbytestop() }
         }
 
         rotateleft.setOnCheckedChangeListener { _, isChecked ->
@@ -103,13 +83,8 @@ class MainActivity : AppCompatActivity() {
                 if (m_btSocket != null) {
                     val bytes = byteArrayOf(5.toByte())
                     m_btSocket?.outputStream?.write(bytes)
-                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
-            } else {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(0.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                }
-            }
+                } else { socketerror() }
+            } else { sendbytestop() }
         }
 
         rotateright.setOnCheckedChangeListener { _, isChecked ->
@@ -117,13 +92,8 @@ class MainActivity : AppCompatActivity() {
                 if (m_btSocket != null) {
                     val bytes = byteArrayOf(6.toByte())
                     m_btSocket?.outputStream?.write(bytes)
-                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
-            } else {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(0.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                }
-            }
+                } else { socketerror() }
+            } else { sendbytestop() }
         }
     }
 
@@ -141,6 +111,15 @@ class MainActivity : AppCompatActivity() {
             requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
         }
     }
+
+    private fun sendbytestop() {
+        if (m_btSocket != null) {
+            val bytes = byteArrayOf(0.toByte())
+            m_btSocket?.outputStream?.write(bytes)
+        }
+    }
+
+    private fun socketerror() { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
 
     private fun connectbt() {
         val connectionstatus: TextView = findViewById(R.id.connectionstatus)
@@ -175,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                 m_btSocket?.close()
                 connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.disconnected))
             } catch (e: Exception) { Toast.makeText(this, "Error disconnecting from device", Toast.LENGTH_SHORT).show() }
-        } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
+        } else { socketerror() }
     }
 
     private fun disablebt() {
