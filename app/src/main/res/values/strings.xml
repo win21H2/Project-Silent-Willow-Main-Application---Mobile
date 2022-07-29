@@ -15,7 +15,7 @@
     <string name="disconnect">Disconnect</string>
     <string name="requestbtperms">Req BT perms</string>
 
-    <string name="license">Made by 324Hz under the GNU General Public License Version 3, 29 June 2007</string>
+    <string name="license">Made under the GNU General Public License Version 3, 29 June 2007</string>
 
     <string name="startbtscan">Paired devices</string>
     <string name="stopbtscan">Stop scan</string>

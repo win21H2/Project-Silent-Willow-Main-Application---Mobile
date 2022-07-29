@@ -28,9 +28,9 @@
         android:text="@string/connectionStatus"
         android:textColor="@color/disconnected"
         android:textSize="12sp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <Button
@@ -95,103 +95,80 @@
         app:layout_constraintTop_toBottomOf="@+id/disconnect" />
 
     <ToggleButton
-        android:id="@+id/button"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:backgroundTint="#22272e"
-        android:textColor="@color/main"
-        android:textOff="@string/uparrow"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/forwards"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/stop"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:backgroundTint="#22272e"
-        android:text="@string/stop"
-        android:textColor="@color/main"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView"
-        app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
-        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView" />
-
-    <Button
         android:id="@+id/forwards"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
-        android:text="@string/uparrow"
+        android:textOff="@string/uparrow"
+        android:textOn="@string/uparrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <ToggleButton
         android:id="@+id/right"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="300dp"
         android:backgroundTint="#22272e"
-        android:text="@string/rightarrow"
+        android:textOff="@string/rightarrow"
+        android:textOn="@string/rightarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/stop"
-        app:layout_constraintStart_toEndOf="@+id/stop" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/horizontalScrollView" />
 
-    <Button
+    <ToggleButton
         android:id="@+id/backwards"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
-        android:text="@string/downarrow"
+        android:textOff="@string/downarrow"
+        android:textOn="@string/downarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
-    <Button
+    <ToggleButton
         android:id="@+id/rotateright"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
         android:backgroundTint="#22272e"
-        android:text="@string/rotaterightarrow"
+        android:textOff="@string/rotaterightarrow"
+        android:textOn="@string/rotaterightarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintStart_toEndOf="@+id/backwards"
         app:layout_constraintTop_toBottomOf="@+id/right" />
 
-    <Button
+    <ToggleButton
         android:id="@+id/left"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="300dp"
         android:backgroundTint="#22272e"
-        android:text="@string/leftarrow"
+        android:textOff="@string/leftarrow"
+        android:textOn="@string/leftarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/stop"
-        app:layout_constraintEnd_toStartOf="@+id/stop" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/horizontalScrollView" />
 
-    <Button
+    <ToggleButton
         android:id="@+id/rotateleft"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="10dp"
         android:backgroundTint="#22272e"
-        android:text="@string/rotateleftarrow"
+        android:textOff="@string/rotateleftarrow"
+        android:textOn="@string/rotateleftarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintEnd_toStartOf="@+id/backwards"
@@ -201,12 +178,11 @@
         android:id="@+id/horizontalScrollView"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginBottom="300dp"
         android:contentDescription="@string/emptycontent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"

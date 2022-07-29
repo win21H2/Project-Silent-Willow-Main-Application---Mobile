@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
@@ -24,16 +25,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
-        val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
-
-        val backwards: Button = findViewById(R.id.backwards)
-        val forwards: Button = findViewById(R.id.forwards)
-        val left: Button = findViewById(R.id.left)
-        val right: Button = findViewById(R.id.right)
-        val rotateleft: Button = findViewById(R.id.rotateleft)
-        val rotateright: Button = findViewById(R.id.rotateright)
-        val stop: Button = findViewById(R.id.stop)
+        val backwards: ToggleButton = findViewById(R.id.backwards)
+        val forwards: ToggleButton = findViewById(R.id.forwards)
+        val left: ToggleButton = findViewById(R.id.left)
+        val right: ToggleButton = findViewById(R.id.right)
+        val rotateleft: ToggleButton = findViewById(R.id.rotateleft)
+        val rotateright: ToggleButton = findViewById(R.id.rotateright)
 
         val enablebt: Button = findViewById(R.id.enableBT)
         val disablebt: Button = findViewById(R.id.disableBT)
@@ -45,130 +42,87 @@ class MainActivity : AppCompatActivity() {
         connectbt.setOnClickListener {connectbt()}
         disconnectbt.setOnClickListener {disconnectbt()}
 
-        /*
-        * TODO
-        *  - Add a toggle button system which allows the user to toggle on/off an action
-        *  - Reformat the code so that it is a bit cleaner for example by separating the movement code into separate private functions
-        * */
+        backwards.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(1.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
+            } else {
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(0.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                }
+            }
+        }
 
-        stop.setOnClickListener {
-            if (m_btSocket != null) {
-                val bytes = byteArrayOf(0.toByte())
-                m_btSocket?.outputStream?.write(bytes)
-                if (bluetoothAdapter?.isEnabled == true) {
-                    backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-                } else { Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show() }
+        forwards.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(2.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
             } else {
-                Toast.makeText(this, "Socket is not connected", Toast.LENGTH_SHORT).show()
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(0.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                }
             }
         }
-        backwards.setOnClickListener {
-            if (m_btSocket != null) {
-                val bytes = byteArrayOf(1.toByte())
-                m_btSocket?.outputStream?.write(bytes)
-                if (bluetoothAdapter?.isEnabled == true) {
-                    backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-                    forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                } else { Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show() }
-            } else {
-                Toast.makeText(this, "Socket is not connected", Toast.LENGTH_SHORT).show()
-            }
-        }
-        forwards.setOnClickListener {
-            if (m_btSocket != null) {
-                val bytes = byteArrayOf(2.toByte())
-                m_btSocket?.outputStream?.write(bytes)
-                if (bluetoothAdapter?.isEnabled == true) {
-                    backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-                    left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                } else { Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show() }
-            } else {
-                Toast.makeText(this, "Socket is not connected", Toast.LENGTH_SHORT).show()
-            }
 
-        }
-        left.setOnClickListener {
-            if (m_btSocket != null) {
-                val bytes = byteArrayOf(3.toByte())
-                m_btSocket?.outputStream?.write(bytes)
-                if (bluetoothAdapter?.isEnabled == true) {
-                    backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    left.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-                    right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                } else { Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show() }
+        left.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(3.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
             } else {
-                Toast.makeText(this, "Socket is not connected", Toast.LENGTH_SHORT).show()
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(0.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                }
             }
         }
-        right.setOnClickListener {
-            if (m_btSocket != null) {
-                val bytes = byteArrayOf(4.toByte())
-                m_btSocket?.outputStream?.write(bytes)
-                if (bluetoothAdapter?.isEnabled == true) {
-                    backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    right.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-                    rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                } else { Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show() }
+
+        right.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(4.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
             } else {
-                Toast.makeText(this, "Socket is not connected", Toast.LENGTH_SHORT).show()
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(0.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                }
             }
         }
-        rotateleft.setOnClickListener {
-            if (m_btSocket != null) {
-                val bytes = byteArrayOf(5.toByte())
-                m_btSocket?.outputStream?.write(bytes)
-                if (bluetoothAdapter?.isEnabled == true) {
-                    backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-                    rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                } else { Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show() }
+
+        rotateleft.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(5.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
             } else {
-                Toast.makeText(this, "Socket is not connected", Toast.LENGTH_SHORT).show()
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(0.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                }
             }
         }
-        rotateright.setOnClickListener {
-            if (m_btSocket != null) {
-                val bytes = byteArrayOf(6.toByte())
-                m_btSocket?.outputStream?.write(bytes)
-                if (bluetoothAdapter?.isEnabled == true) {
-                    backwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    forwards.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    left.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    right.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateleft.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                    rotateright.setTextColor(ContextCompat.getColor(applicationContext, R.color.moveactivated))
-                    stop.setTextColor(ContextCompat.getColor(applicationContext, R.color.main))
-                } else { Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show() }
+
+        rotateright.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(6.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
             } else {
-                Toast.makeText(this, "Socket is not connected", Toast.LENGTH_SHORT).show()
+                if (m_btSocket != null) {
+                    val bytes = byteArrayOf(0.toByte())
+                    m_btSocket?.outputStream?.write(bytes)
+                }
             }
         }
     }
@@ -180,11 +134,8 @@ class MainActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT)
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
             bluetoothAdapter?.enable()
-            if (bluetoothAdapter?.isEnabled == true) {
-                Toast.makeText(this, "Bluetooth has already been turned on", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Bluetooth is now turned on", Toast.LENGTH_SHORT).show()
-            }
+            if (bluetoothAdapter?.isEnabled == true) { Toast.makeText(this, "Bluetooth has already been turned on", Toast.LENGTH_SHORT).show()
+            } else { Toast.makeText(this, "Bluetooth is now turned on", Toast.LENGTH_SHORT).show() }
         } else {
             Toast.makeText(this, "Please allow Bluetooth permissions", Toast.LENGTH_SHORT).show()
             requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
@@ -219,16 +170,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun disconnectbt() {
         val connectionstatus: TextView = findViewById(R.id.connectionstatus)
-        try {
-            m_btSocket?.close()
-            connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.disconnected))
-        } catch (e: Exception) { Toast.makeText(this, "Error disconnecting from device", Toast.LENGTH_SHORT).show() }
+        if (m_btSocket != null) {
+            try {
+                m_btSocket?.close()
+                connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.disconnected))
+            } catch (e: Exception) { Toast.makeText(this, "Error disconnecting from device", Toast.LENGTH_SHORT).show() }
+        } else { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
     }
 
     private fun disablebt() {
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
-
         bluetoothAdapter?.disable()
         Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
     }
