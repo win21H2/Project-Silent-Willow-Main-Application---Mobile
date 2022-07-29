@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
@@ -25,12 +24,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val backwards: ToggleButton = findViewById(R.id.backwards)
-        val forwards: ToggleButton = findViewById(R.id.forwards)
-        val left: ToggleButton = findViewById(R.id.left)
-        val right: ToggleButton = findViewById(R.id.right)
-        val rotateleft: ToggleButton = findViewById(R.id.rotateleft)
-        val rotateright: ToggleButton = findViewById(R.id.rotateright)
+        val backwards: Button = findViewById(R.id.backwards)
+        val forwards: Button = findViewById(R.id.forwards)
+        val left: Button = findViewById(R.id.left)
+        val right: Button = findViewById(R.id.right)
+        val rotateleft: Button = findViewById(R.id.rotateleft)
+        val rotateright: Button = findViewById(R.id.rotateright)
+
+        val stop: Button = findViewById(R.id.stop)
 
         val enablebt: Button = findViewById(R.id.enableBT)
         val disablebt: Button = findViewById(R.id.disableBT)
@@ -42,58 +43,47 @@ class MainActivity : AppCompatActivity() {
         connectbt.setOnClickListener {connectbt()}
         disconnectbt.setOnClickListener {disconnectbt()}
 
-        backwards.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(1.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                } else { socketerror() }
-            } else { sendbytestop() }
+        stop.setOnClickListener {
+            if (m_btSocket != null) {
+                val bytes = byteArrayOf(0.toByte())
+                m_btSocket?.outputStream?.write(bytes)
+            } else { socketerror() }
         }
-
-        forwards.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(2.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                } else { socketerror() }
-            } else { sendbytestop() }
+        backwards.setOnClickListener {
+            if (m_btSocket != null) {
+                val bytes = byteArrayOf(1.toByte())
+                m_btSocket?.outputStream?.write(bytes)
+            } else { socketerror() }
         }
-
-        left.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(3.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                } else { socketerror() }
-            } else { sendbytestop() }
+        forwards.setOnClickListener {
+            if (m_btSocket != null) {
+                val bytes = byteArrayOf(2.toByte())
+                m_btSocket?.outputStream?.write(bytes)
+            } else { socketerror() }
         }
-
-        right.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(4.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                } else { socketerror() }
-            } else { sendbytestop() }
+        left.setOnClickListener {
+            if (m_btSocket != null) {
+                val bytes = byteArrayOf(3.toByte())
+                m_btSocket?.outputStream?.write(bytes)
+            } else { socketerror() }
         }
-
-        rotateleft.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(5.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                } else { socketerror() }
-            } else { sendbytestop() }
+        right.setOnClickListener {
+            if (m_btSocket != null) {
+                val bytes = byteArrayOf(4.toByte())
+                m_btSocket?.outputStream?.write(bytes)
+            } else { socketerror() }
         }
-
-        rotateright.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (m_btSocket != null) {
-                    val bytes = byteArrayOf(6.toByte())
-                    m_btSocket?.outputStream?.write(bytes)
-                } else { socketerror() }
-            } else { sendbytestop() }
+        rotateleft.setOnClickListener {
+            if (m_btSocket != null) {
+                val bytes = byteArrayOf(5.toByte())
+                m_btSocket?.outputStream?.write(bytes)
+            } else { socketerror() }
+        }
+        rotateright.setOnClickListener {
+            if (m_btSocket != null) {
+                val bytes = byteArrayOf(6.toByte())
+                m_btSocket?.outputStream?.write(bytes)
+            } else { socketerror() }
         }
     }
 
@@ -109,13 +99,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Please allow Bluetooth permissions", Toast.LENGTH_SHORT).show()
             requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
-        }
-    }
-
-    private fun sendbytestop() {
-        if (m_btSocket != null) {
-            val bytes = byteArrayOf(0.toByte())
-            m_btSocket?.outputStream?.write(bytes)
         }
     }
 

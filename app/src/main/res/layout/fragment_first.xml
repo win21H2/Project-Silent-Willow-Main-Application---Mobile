@@ -35,7 +35,6 @@
 
     <Button
         android:id="@+id/connect"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -51,7 +50,6 @@
 
     <Button
         android:id="@+id/disconnect"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -67,7 +65,6 @@
 
     <Button
         android:id="@+id/enableBT"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:backgroundTint="#22272e"
@@ -82,7 +79,6 @@
 
     <Button
         android:id="@+id/disableBT"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:backgroundTint="#22272e"
@@ -94,85 +90,92 @@
         app:layout_constraintStart_toStartOf="@+id/disconnect"
         app:layout_constraintTop_toBottomOf="@+id/disconnect" />
 
-    <ToggleButton
+    <Button
         android:id="@+id/forwards"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
-        android:textOff="@string/uparrow"
-        android:textOn="@string/uparrow"
+        android:text="@string/uparrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ToggleButton
+    <Button
         android:id="@+id/right"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="300dp"
         android:backgroundTint="#22272e"
-        android:textOff="@string/rightarrow"
-        android:textOn="@string/rightarrow"
+        android:text="@string/rightarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/horizontalScrollView" />
 
-    <ToggleButton
+    <Button
         android:id="@+id/backwards"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:backgroundTint="#22272e"
-        android:textOff="@string/downarrow"
-        android:textOn="@string/downarrow"
+        android:text="@string/downarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
-    <ToggleButton
+    <Button
         android:id="@+id/rotateright"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="10dp"
         android:backgroundTint="#22272e"
-        android:textOff="@string/rotaterightarrow"
-        android:textOn="@string/rotaterightarrow"
+        android:text="@string/rotaterightarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintStart_toEndOf="@+id/backwards"
         app:layout_constraintTop_toBottomOf="@+id/right" />
 
-    <ToggleButton
+    <Button
         android:id="@+id/left"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="300dp"
         android:backgroundTint="#22272e"
-        android:textOff="@string/leftarrow"
-        android:textOn="@string/leftarrow"
         android:textColor="@color/main"
+        android:text="@string/leftarrow"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/horizontalScrollView" />
 
-    <ToggleButton
+    <Button
         android:id="@+id/rotateleft"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="#22272e"
-        android:textOff="@string/rotateleftarrow"
-        android:textOn="@string/rotateleftarrow"
+        android:text="@string/rotateleftarrow"
         android:textColor="@color/main"
         android:textSize="40sp"
         app:layout_constraintEnd_toStartOf="@+id/backwards"
         app:layout_constraintTop_toBottomOf="@+id/left" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:text="@string/stop"
+        android:backgroundTint="#22272e"
+        android:textColor="@color/main"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/backwards"
+        app:layout_constraintEnd_toStartOf="@+id/right"
+        app:layout_constraintStart_toEndOf="@+id/left"
+        app:layout_constraintTop_toBottomOf="@+id/forwards" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
