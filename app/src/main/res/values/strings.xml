@@ -13,7 +13,6 @@
     <string name="connectionStatus">----------------------------------------------------------------------------</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
-    <string name="requestbtperms">Req BT perms</string>
 
     <string name="license">Made under the GNU General Public License Version 3, 29 June 2007</string>
 
