@@ -3,6 +3,7 @@ package com.example.projectsilentwillowmainapplication
 import android.bluetooth.*
 import android.os.Bundle
 import android.widget.Button
+import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val rotateleft: Button = findViewById(R.id.rotateleft)
         val rotateright: Button = findViewById(R.id.rotateright)
 
+        val speed: SeekBar = findViewById(R.id.speed)
         val stop: Button = findViewById(R.id.stop)
 
         val enablebt: Button = findViewById(R.id.enableBT)
@@ -42,6 +44,20 @@ class MainActivity : AppCompatActivity() {
         disablebt.setOnClickListener {disablebt()}
         connectbt.setOnClickListener {connectbt()}
         disconnectbt.setOnClickListener {disconnectbt()}
+
+        speed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (m_btSocket != null) {
+                    if (progress > 7) {
+                        val bytes = ByteArray(1)
+                        bytes[0] = progress.toByte()
+                        m_btSocket!!.outputStream.write(bytes)
+                    } else { /*do nothing*/ }
+                } else { socketerror() }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
 
         stop.setOnClickListener {
             if (m_btSocket != null) {

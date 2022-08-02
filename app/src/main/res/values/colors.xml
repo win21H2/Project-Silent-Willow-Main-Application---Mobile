@@ -8,4 +8,5 @@
     <color name="moveactivated">#80DCDDDE</color>
     <color name="disconnected">#FF0000</color>
     <color name="connected">#00FF00</color>
+    <color name="seekbar">#36393F</color>
 </resources>

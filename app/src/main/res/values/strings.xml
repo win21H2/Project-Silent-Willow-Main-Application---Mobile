@@ -14,10 +14,13 @@
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
 
-    <string name="license">Made under the GNU General Public License Version 3, 29 June 2007</string>
+    <string name="lightson">Lights ON</string>
+    <string name="lightsoff">Lights OFF</string>
+
+    <string name="license">Made by 324Hz under the GNU General Public License Version 3, 29 June 2007</string>
 
     <string name="startbtscan">Paired devices</string>
     <string name="stopbtscan">Stop scan</string>
-    <string name="enablebt">Turn BT on</string>
-    <string name="disablebt">Turn BT off</string>
+    <string name="enablebt">BT ON</string>
+    <string name="disablebt">BT OFF</string>
 </resources>
