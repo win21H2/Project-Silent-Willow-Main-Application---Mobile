@@ -52,13 +52,13 @@ class MainActivity : AppCompatActivity() {
                         val bytes = ByteArray(1)
                         bytes[0] = progress.toByte()
                         m_btSocket!!.outputStream.write(bytes)
+                        //TODO: make the speed change actually happen so that when the user changes the value, it would simultaneously change the speed of PSW
                     } else { /*do nothing*/ }
                 } else { socketerror() }
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
-
         stop.setOnClickListener {
             if (m_btSocket != null) {
                 val bytes = byteArrayOf(0.toByte())

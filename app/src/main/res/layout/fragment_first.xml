@@ -91,32 +91,6 @@
         app:layout_constraintTop_toBottomOf="@+id/disconnect" />
 
     <Button
-        android:id="@+id/lightson"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#22272e"
-        android:text="@string/lightson"
-        android:textAllCaps="false"
-        android:textColor="@color/main"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="@+id/enableBT"
-        app:layout_constraintStart_toStartOf="@+id/enableBT"
-        app:layout_constraintTop_toBottomOf="@+id/enableBT" />
-
-    <Button
-        android:id="@+id/lightsoff"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#22272e"
-        android:text="@string/lightsoff"
-        android:textAllCaps="false"
-        android:textColor="@color/main"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="@+id/disableBT"
-        app:layout_constraintStart_toStartOf="@+id/disableBT"
-        app:layout_constraintTop_toBottomOf="@+id/disableBT" />
-
-    <Button
         android:id="@+id/forwards"
         android:layout_width="75dp"
         android:layout_height="75dp"
