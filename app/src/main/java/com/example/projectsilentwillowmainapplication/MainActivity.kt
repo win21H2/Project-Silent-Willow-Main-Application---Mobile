@@ -27,20 +27,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val backwards: Button = findViewById(R.id.backwards); val forwards: Button = findViewById(R.id.forwards)
-        val left: Button = findViewById(R.id.left); val right: Button = findViewById(R.id.right)
-        val rotateleft: Button = findViewById(R.id.rotateleft); val rotateright: Button = findViewById(R.id.rotateright)
-        val speed: SeekBar = findViewById(R.id.speed)
-        val stop: Button = findViewById(R.id.stop)
+        val stop: Button = findViewById(R.id.stop); stop.setOnClickListener { stop() }
+        val backwards: Button = findViewById(R.id.backwards); backwards.setOnClickListener { backwards() }
+        val forwards: Button = findViewById(R.id.forwards); forwards.setOnClickListener { forwards() }
+        val left: Button = findViewById(R.id.left); left.setOnClickListener { left() }
+        val right: Button = findViewById(R.id.right); right.setOnClickListener { right() }
+        val rotateleft: Button = findViewById(R.id.rotateleft); rotateleft.setOnClickListener { rotateleft() }
+        val rotateright: Button = findViewById(R.id.rotateright); rotateright.setOnClickListener { rotateright() }
 
-        val others: Button = findViewById(R.id.others); val relayoff: Button = findViewById(R.id.relayoff); val relayon: Button = findViewById(R.id.relayon)
-        others.setOnClickListener { others() }; relayoff.setOnClickListener { relayoff() }; relayon.setOnClickListener { relayon() }
+        val others: Button = findViewById(R.id.others); others.setOnClickListener { others() }
+        val relayoff: Button = findViewById(R.id.relayoff); relayoff.setOnClickListener { relayoff() }
+        val relayon: Button = findViewById(R.id.relayon); relayon.setOnClickListener { relayon() }
 
         val enablebt: Button = findViewById(R.id.enableBT); enablebt.setOnClickListener {enablebt()}
         val disablebt: Button = findViewById(R.id.disableBT); disablebt.setOnClickListener {disablebt()}
         val connectbt: Button = findViewById(R.id.connect); connectbt.setOnClickListener {connectbt()}
         val disconnectbt: Button = findViewById(R.id.disconnect); disconnectbt.setOnClickListener {disconnectbt()}
 
+        val speed: SeekBar = findViewById(R.id.speed)
         speed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (m_btSocket != null) {
@@ -48,55 +52,55 @@ class MainActivity : AppCompatActivity() {
                         val bytes = ByteArray(1)
                         bytes[0] = progress.toByte()
                         m_btSocket!!.outputStream.write(bytes)
-                        //TODO: make the speed change actually happen so that when the user changes the value, it would simultaneously change the speed of PSW
                     }
                 } else { socketerror() }
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
-        stop.setOnClickListener {
-            val bytes = byteArrayOf(0.toByte())
-            if (m_btSocket != null) {
-                m_btSocket?.outputStream?.write(bytes)
-            } else { socketerror() }
-        }
-        backwards.setOnClickListener {
-            val bytes = byteArrayOf(1.toByte())
-            if (m_btSocket != null) {
-                m_btSocket?.outputStream?.write(bytes)
-            } else { socketerror() }
-        }
-        forwards.setOnClickListener {
-            val bytes = byteArrayOf(2.toByte())
-            if (m_btSocket != null) {
-                m_btSocket?.outputStream?.write(bytes)
-            } else { socketerror() }
-        }
-        left.setOnClickListener {
-            val bytes = byteArrayOf(3.toByte())
-            if (m_btSocket != null) {
-                m_btSocket?.outputStream?.write(bytes)
-            } else { socketerror() }
-        }
-        right.setOnClickListener {
-            val bytes = byteArrayOf(4.toByte())
-            if (m_btSocket != null) {
-                m_btSocket?.outputStream?.write(bytes)
-            } else { socketerror() }
-        }
-        rotateleft.setOnClickListener {
-            val bytes = byteArrayOf(5.toByte())
-            if (m_btSocket != null) {
-                m_btSocket?.outputStream?.write(bytes)
-            } else { socketerror() }
-        }
-        rotateright.setOnClickListener {
-            val bytes = byteArrayOf(6.toByte())
-            if (m_btSocket != null) {
-                m_btSocket?.outputStream?.write(bytes)
-            } else { socketerror() }
-        }
+    }
+
+    private fun stop() {
+        val bytes = byteArrayOf(0.toByte())
+        if (m_btSocket != null) {
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
+    }
+    private fun backwards() {
+        val bytes = byteArrayOf(1.toByte())
+        if (m_btSocket != null) {
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
+    }
+    private fun forwards() {
+        val bytes = byteArrayOf(2.toByte())
+        if (m_btSocket != null) {
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
+    }
+    private fun left() {
+        val bytes = byteArrayOf(3.toByte())
+        if (m_btSocket != null) {
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
+    }
+    private fun right() {
+        val bytes = byteArrayOf(4.toByte())
+        if (m_btSocket != null) {
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
+    }
+    private fun rotateleft() {
+        val bytes = byteArrayOf(5.toByte())
+        if (m_btSocket != null) {
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
+    }
+    private fun rotateright() {
+        val bytes = byteArrayOf(6.toByte())
+        if (m_btSocket != null) {
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
     }
 
     private fun enablebt() {
