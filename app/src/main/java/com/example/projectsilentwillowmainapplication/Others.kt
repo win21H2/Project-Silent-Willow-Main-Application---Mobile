@@ -14,7 +14,10 @@ class Others : AppCompatActivity() {
         val license: Button = findViewById(R.id.license)
         val about: Button = findViewById(R.id.about)
 
-        home.setOnClickListener { finish() }
+        home.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
         license.setOnClickListener {
             val intent = Intent(this, License::class.java)
             startActivity(intent)

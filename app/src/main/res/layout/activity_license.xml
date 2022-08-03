@@ -11,8 +11,8 @@
         android:id="@+id/home"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:backgroundTint="#22272e"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#22272e"
         android:text="@string/home"
         android:textAllCaps="false"
         android:textColor="@color/main"
@@ -23,16 +23,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="@color/buttonclick" />
 
+    <Button
+        android:id="@+id/back"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#22272e"
+        android:text="@string/back"
+        android:textAllCaps="false"
+        android:textColor="@color/main"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/licensebutton"
         android:layout_marginTop="20dp"
         android:textColor="@color/main"
         android:textSize="12sp"
-        android:text="@string/about"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home" />
+        app:layout_constraintTop_toBottomOf="@+id/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
