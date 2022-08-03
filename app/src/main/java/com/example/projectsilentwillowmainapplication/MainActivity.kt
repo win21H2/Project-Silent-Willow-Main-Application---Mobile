@@ -37,6 +37,9 @@ class MainActivity : AppCompatActivity() {
         val speed: SeekBar = findViewById(R.id.speed)
         val stop: Button = findViewById(R.id.stop)
 
+        val relayoff: Button = findViewById(R.id.relayoff)
+        val relayon: Button = findViewById(R.id.relayon)
+
         val enablebt: Button = findViewById(R.id.enableBT)
         val disablebt: Button = findViewById(R.id.disableBT)
         val connectbt: Button = findViewById(R.id.connect)
@@ -48,11 +51,13 @@ class MainActivity : AppCompatActivity() {
         disconnectbt.setOnClickListener {disconnectbt()}
 
         others.setOnClickListener { others() }
+        relayoff.setOnClickListener { relayoff() }
+        relayon.setOnClickListener { relayon() }
 
         speed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (m_btSocket != null) {
-                    if (progress > 7) {
+                    if (progress > 9) {
                         val bytes = ByteArray(1)
                         bytes[0] = progress.toByte()
                         m_btSocket!!.outputStream.write(bytes)
@@ -170,5 +175,19 @@ class MainActivity : AppCompatActivity() {
     private fun others() {
         val intent = Intent(this, Others::class.java)
         startActivity(intent)
+    }
+
+    private fun relayon() {
+        if (m_btSocket != null) {
+            val bytes = byteArrayOf(7.toByte())
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
+    }
+
+    private fun relayoff() {
+        if (m_btSocket != null) {
+            val bytes = byteArrayOf(8.toByte())
+            m_btSocket?.outputStream?.write(bytes)
+        } else { socketerror() }
     }
 }
