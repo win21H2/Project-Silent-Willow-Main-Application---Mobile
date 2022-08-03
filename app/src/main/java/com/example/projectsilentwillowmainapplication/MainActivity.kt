@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
-import org.w3c.dom.Text
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
