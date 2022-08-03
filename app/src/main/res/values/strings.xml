@@ -18,6 +18,13 @@
     <string name="home">Home</string>
     <string name="others">More</string>
 
+    <string name="startbtscan">Paired devices</string>
+    <string name="stopbtscan">Stop scan</string>
+    <string name="enablebt">BT ON</string>
+    <string name="disablebt">BT OFF</string>
+    <string name="relayon">Relay ON</string>
+    <string name="relayoff">Relay OFF</string>
+
     <string name="licensebutton">License</string>
     <string name="license1">GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 <br/>\n\n Copyright © 2007 Free Software Foundation, Inc. https://fsf.org/ Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed. <br/>\n\n Preamble
         <br/>\n\n
@@ -236,14 +243,9 @@ A “covered work” means either the unmodified Program or a work based on the 
     </string>
 
     <string name="about">About</string>
-    <string name="aboutdesc1">This is the control application for Project Silent Willow and was made in Android Studio by 324Hz/win21H2 and uses Kotlin as the main language. I have made this application because originally, I was using MIT App Inventor which does not give many options for customization and I wanted to have full control over what I made which was why I switched to Android Studio.
-    <br/>\n\n
-    Please note that although the user-interface makes this application look like it can be used for other vehicles, please dont and note I will not take responsibility for damages caused by using this application to control other vehicles.</string>
-
-    <string name="startbtscan">Paired devices</string>
-    <string name="stopbtscan">Stop scan</string>
-    <string name="enablebt">BT ON</string>
-    <string name="disablebt">BT OFF</string>
-    <string name="relayon">Relay ON</string>
-    <string name="relayoff">Relay OFF</string>
+    <string name="aboutdesc1">
+        This is the control application for Project Silent Willow and was made in Android Studio by 324Hz/win21H2 and uses Kotlin as the main language. I have made this application because originally, I was using MIT App Inventor which does not give many options for customization and I wanted to have full control over what I made which was why I switched to Android Studio.
+        <br/>\n\n
+        Please note that although the user-interface makes this application look like it can be used for other vehicles, please dont and note I will not take responsibility for damages caused by using this application to control other vehicles.
+    </string>
 </resources>

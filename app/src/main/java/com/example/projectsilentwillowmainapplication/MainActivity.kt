@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.projectsilentwillowmainapplication.databinding.ActivityMainBinding
+import org.w3c.dom.Text
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,33 +27,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val backwards: Button = findViewById(R.id.backwards)
-        val forwards: Button = findViewById(R.id.forwards)
-        val left: Button = findViewById(R.id.left)
-        val right: Button = findViewById(R.id.right)
-        val rotateleft: Button = findViewById(R.id.rotateleft)
-        val rotateright: Button = findViewById(R.id.rotateright)
-
-        val others: Button = findViewById(R.id.others)
+        val backwards: Button = findViewById(R.id.backwards); val forwards: Button = findViewById(R.id.forwards)
+        val left: Button = findViewById(R.id.left); val right: Button = findViewById(R.id.right)
+        val rotateleft: Button = findViewById(R.id.rotateleft); val rotateright: Button = findViewById(R.id.rotateright)
         val speed: SeekBar = findViewById(R.id.speed)
         val stop: Button = findViewById(R.id.stop)
 
-        val relayoff: Button = findViewById(R.id.relayoff)
-        val relayon: Button = findViewById(R.id.relayon)
+        val others: Button = findViewById(R.id.others); val relayoff: Button = findViewById(R.id.relayoff); val relayon: Button = findViewById(R.id.relayon)
+        others.setOnClickListener { others() }; relayoff.setOnClickListener { relayoff() }; relayon.setOnClickListener { relayon() }
 
-        val enablebt: Button = findViewById(R.id.enableBT)
-        val disablebt: Button = findViewById(R.id.disableBT)
-        val connectbt: Button = findViewById(R.id.connect)
-        val disconnectbt: Button = findViewById(R.id.disconnect)
-
-        enablebt.setOnClickListener {enablebt()}
-        disablebt.setOnClickListener {disablebt()}
-        connectbt.setOnClickListener {connectbt()}
-        disconnectbt.setOnClickListener {disconnectbt()}
-
-        others.setOnClickListener { others() }
-        relayoff.setOnClickListener { relayoff() }
-        relayon.setOnClickListener { relayon() }
+        val enablebt: Button = findViewById(R.id.enableBT); enablebt.setOnClickListener {enablebt()}
+        val disablebt: Button = findViewById(R.id.disableBT); disablebt.setOnClickListener {disablebt()}
+        val connectbt: Button = findViewById(R.id.connect); connectbt.setOnClickListener {connectbt()}
+        val disconnectbt: Button = findViewById(R.id.disconnect); disconnectbt.setOnClickListener {disconnectbt()}
 
         speed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -62,51 +49,51 @@ class MainActivity : AppCompatActivity() {
                         bytes[0] = progress.toByte()
                         m_btSocket!!.outputStream.write(bytes)
                         //TODO: make the speed change actually happen so that when the user changes the value, it would simultaneously change the speed of PSW
-                    } else { /*do nothing*/ }
+                    }
                 } else { socketerror() }
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
         stop.setOnClickListener {
+            val bytes = byteArrayOf(0.toByte())
             if (m_btSocket != null) {
-                val bytes = byteArrayOf(0.toByte())
                 m_btSocket?.outputStream?.write(bytes)
             } else { socketerror() }
         }
         backwards.setOnClickListener {
+            val bytes = byteArrayOf(1.toByte())
             if (m_btSocket != null) {
-                val bytes = byteArrayOf(1.toByte())
                 m_btSocket?.outputStream?.write(bytes)
             } else { socketerror() }
         }
         forwards.setOnClickListener {
+            val bytes = byteArrayOf(2.toByte())
             if (m_btSocket != null) {
-                val bytes = byteArrayOf(2.toByte())
                 m_btSocket?.outputStream?.write(bytes)
             } else { socketerror() }
         }
         left.setOnClickListener {
+            val bytes = byteArrayOf(3.toByte())
             if (m_btSocket != null) {
-                val bytes = byteArrayOf(3.toByte())
                 m_btSocket?.outputStream?.write(bytes)
             } else { socketerror() }
         }
         right.setOnClickListener {
+            val bytes = byteArrayOf(4.toByte())
             if (m_btSocket != null) {
-                val bytes = byteArrayOf(4.toByte())
                 m_btSocket?.outputStream?.write(bytes)
             } else { socketerror() }
         }
         rotateleft.setOnClickListener {
+            val bytes = byteArrayOf(5.toByte())
             if (m_btSocket != null) {
-                val bytes = byteArrayOf(5.toByte())
                 m_btSocket?.outputStream?.write(bytes)
             } else { socketerror() }
         }
         rotateright.setOnClickListener {
+            val bytes = byteArrayOf(6.toByte())
             if (m_btSocket != null) {
-                val bytes = byteArrayOf(6.toByte())
                 m_btSocket?.outputStream?.write(bytes)
             } else { socketerror() }
         }
@@ -115,53 +102,44 @@ class MainActivity : AppCompatActivity() {
     private fun enablebt() {
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
-
         ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT)
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
             bluetoothAdapter?.enable()
-            if (bluetoothAdapter?.isEnabled == true) { Toast.makeText(this, "Bluetooth has already been turned on", Toast.LENGTH_SHORT).show()
-            } else { Toast.makeText(this, "Bluetooth is now turned on", Toast.LENGTH_SHORT).show() }
-        } else {
-            Toast.makeText(this, "Please allow Bluetooth permissions", Toast.LENGTH_SHORT).show()
-            requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1)
-        }
+            Toast.makeText(this, "BT ON", Toast.LENGTH_SHORT).show()
+        } else { requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT), 1) }
     }
 
     private fun socketerror() { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
 
     private fun connectbt() {
+        val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
+        val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
         val connectionstatus: TextView = findViewById(R.id.connectionstatus)
+        val deviceinfo: TextView = findViewById(R.id.deviceinfo)
+        val pairedDevices = bluetoothAdapter?.bondedDevices
+        val uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
         try {
-          val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
-          val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
           if (bluetoothAdapter?.isEnabled == false) {
-              Toast.makeText(this, "Please turn on Bluetooth", Toast.LENGTH_SHORT).show()
-                } else {
-                    val pairedDevices = bluetoothAdapter?.bondedDevices
-                    if (pairedDevices?.isNotEmpty() == true) {
-                        for (device in pairedDevices) {
-                            if (device.name == "HC-05") {
-                                if (device.address == "98:D3:71:FE:13:4D") {
-                                    m_device = device
-                                    val uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
-                                    m_btSocket = m_device.createRfcommSocketToServiceRecord(uuid)
-                                    m_btSocket?.connect()
-                                    connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.connected))
-                                }
-                            }
-                        }
-                    } else { Toast.makeText(this, "No paired devices", Toast.LENGTH_SHORT).show() }
-                }
-      } catch (e: Exception) { Toast.makeText(this, "Error connecting to device", Toast.LENGTH_SHORT).show() }
+                Toast.makeText(this, "ERROR BT OFF", Toast.LENGTH_SHORT).show()
+          } else {
+            for (device in pairedDevices!!) {
+              if (device.address == "98:D3:71:FE:13:4D") {
+                  deviceinfo.text = (device.name + " : " + device.address + " : " + device.bondState + " : " + device.type + " : " + device.uuids)
+                  m_device = device
+                  m_btSocket = m_device.createRfcommSocketToServiceRecord(uuid)
+                  m_btSocket?.connect()
+                  connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.connected))
+              }
+            }
+          }
+      } catch (e: Exception) { Toast.makeText(this, "ERROR DEVICE CONNECT", Toast.LENGTH_SHORT).show() }
     }
 
     private fun disconnectbt() {
         val connectionstatus: TextView = findViewById(R.id.connectionstatus)
         if (m_btSocket != null) {
-            try {
-                m_btSocket?.close()
-                connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.disconnected))
-            } catch (e: Exception) { Toast.makeText(this, "Error disconnecting from device", Toast.LENGTH_SHORT).show() }
+            try { m_btSocket?.close(); connectionstatus.setTextColor(ContextCompat.getColor(applicationContext, R.color.disconnected)) }
+            catch (e: Exception) { Toast.makeText(this, "ERROR DEVICE DISCONNECT", Toast.LENGTH_SHORT).show() }
         } else { socketerror() }
     }
 
@@ -169,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
         bluetoothAdapter?.disable()
-        Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "BT OFF", Toast.LENGTH_SHORT).show()
     }
 
     private fun others() {
@@ -178,15 +156,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun relayon() {
+        val bytes = byteArrayOf(7.toByte())
         if (m_btSocket != null) {
-            val bytes = byteArrayOf(7.toByte())
             m_btSocket?.outputStream?.write(bytes)
         } else { socketerror() }
     }
 
     private fun relayoff() {
+        val bytes = byteArrayOf(8.toByte())
         if (m_btSocket != null) {
-            val bytes = byteArrayOf(8.toByte())
             m_btSocket?.outputStream?.write(bytes)
         } else { socketerror() }
     }
