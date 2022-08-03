@@ -3,8 +3,10 @@
 <h1 align="center">
 <img src="https://user-images.githubusercontent.com/92825997/181417675-6f17cd59-f58e-4104-b326-a23e8f378a17.png" width="300"/>
 <img src="https://user-images.githubusercontent.com/92825997/182429943-a482b54c-3a1e-4a58-8aef-f62968a13474.png" width="300"/>
+<img src="https://user-images.githubusercontent.com/92825997/182665209-f3431947-fcf3-40f7-a190-912d7bcb2b91.png" width="300"/>
+
 </h1>
-<h6 align="center">^ different versions of the application (Note they were taken on different days) ^</h6>
+<h6 align="center">^ different versions of the application ^<br>(Note they were taken on different days)</h6>
 <h3 align="center">What is it and what is it used for?</h3>
 <h6 align="center">This is an open-source control application for Project Silent Willow using Android Studio and Kotlin as the main language. Although the user interface might suggest other uses, please only use for controlling Project Silent Willow as I have no control over other third party products or services</h6>
 <h3 align="center">Why did I want to custom make this application?</h3>
