@@ -14,8 +14,11 @@
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
 
-    <string name="lightson">Lights ON</string>
-    <string name="lightsoff">Lights OFF</string>
+    <string name="home">Home</string>
+    <string name="others">More</string>
+    <string name="licensebutton">License</string>
+    <string name="about">About</string>
+    <string name="aboutdesc">This is the control application for Project Silent Willow and was made in Android Studio by 324Hz/win21H2 and uses Kotlin as the main language</string>
 
     <string name="license">Made by 324Hz under the GNU General Public License Version 3, 29 June 2007</string>
 

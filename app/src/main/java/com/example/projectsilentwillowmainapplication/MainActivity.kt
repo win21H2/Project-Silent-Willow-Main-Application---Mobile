@@ -1,6 +1,7 @@
 package com.example.projectsilentwillowmainapplication
 
 import android.bluetooth.*
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         val rotateleft: Button = findViewById(R.id.rotateleft)
         val rotateright: Button = findViewById(R.id.rotateright)
 
+        val others: Button = findViewById(R.id.others)
         val speed: SeekBar = findViewById(R.id.speed)
         val stop: Button = findViewById(R.id.stop)
 
@@ -44,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         disablebt.setOnClickListener {disablebt()}
         connectbt.setOnClickListener {connectbt()}
         disconnectbt.setOnClickListener {disconnectbt()}
+
+        others.setOnClickListener { others() }
 
         speed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -161,5 +165,10 @@ class MainActivity : AppCompatActivity() {
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
         bluetoothAdapter?.disable()
         Toast.makeText(this, "Bluetooth has been turned off", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun others() {
+        val intent = Intent(this, Others::class.java)
+        startActivity(intent)
     }
 }

@@ -91,6 +91,20 @@
         app:layout_constraintTop_toBottomOf="@+id/disconnect" />
 
     <Button
+        android:id="@+id/others"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#22272e"
+        android:text="@string/others"
+        android:textAllCaps="false"
+        android:textColor="@color/main"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
         android:id="@+id/forwards"
         android:layout_width="75dp"
         android:layout_height="75dp"
