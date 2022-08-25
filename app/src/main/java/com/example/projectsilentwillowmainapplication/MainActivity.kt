@@ -26,61 +26,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //------
-
-        val stop: Button = findViewById(R.id.stop)
-        stop.setOnClickListener {
-            if(m_btSocket != null) { stop() }
-            else { socketerror() }
-        }
-
-        val backwards: Button = findViewById(R.id.backwards)
-        backwards.setOnClickListener {
-            if (m_btSocket != null) { backwards() }
-            else { socketerror() }
-        }
-
-        val forwards: Button = findViewById(R.id.forwards)
-        forwards.setOnClickListener {
-            if (m_btSocket != null) { forwards() }
-            else { socketerror() }
-        }
-
-        val left: Button = findViewById(R.id.left)
-        left.setOnClickListener {
-            if (m_btSocket != null) { left() }
-            else { socketerror() }
-        }
-
-        val right: Button = findViewById(R.id.right)
-        right.setOnClickListener {
-            if(m_btSocket != null) { right() }
-            else { socketerror() }
-        }
-
-        val rotateleft: Button = findViewById(R.id.rotateleft)
-        rotateleft.setOnClickListener {
-            if (m_btSocket != null) { rotateleft() }
-            else { socketerror() }
-        }
-
-        val rotateright: Button = findViewById(R.id.rotateright)
-        rotateright.setOnClickListener {
-            if (m_btSocket != null) { rotateright() }
-            else { socketerror() }
-        }
-        //TODO: turn all of the below into one if statement for the != null section
+        val stop: Button = findViewById(R.id.stop); stop.setOnClickListener { if(m_btSocket != null) { stop() } else { socketerror() } }
+        val speed: SeekBar = findViewById(R.id.speed)
+        val backwards: Button = findViewById(R.id.backwards); backwards.setOnClickListener { if(m_btSocket != null) { backwards() } else { socketerror() }}
+        val forwards: Button = findViewById(R.id.forwards); forwards.setOnClickListener { if (m_btSocket != null) { forwards() } else { socketerror() } }
+        val left: Button = findViewById(R.id.left); left.setOnClickListener { if (m_btSocket != null) { left() } else { socketerror() } }
+        val right: Button = findViewById(R.id.right); right.setOnClickListener { if(m_btSocket != null) { right() } else { socketerror() } }
+        val rotateleft: Button = findViewById(R.id.rotateleft); rotateleft.setOnClickListener { if (m_btSocket != null) { rotateleft() } else { socketerror() } }
+        val rotateright: Button = findViewById(R.id.rotateright); rotateright.setOnClickListener { if (m_btSocket != null) { rotateright() } else { socketerror() } }
 
         val others: Button = findViewById(R.id.others); others.setOnClickListener { others() }
-        val relayoff: Button = findViewById(R.id.relayoff); relayoff.setOnClickListener { relayoff() }
-        val relayon: Button = findViewById(R.id.relayon); relayon.setOnClickListener { relayon() }
+        val relayoff: Button = findViewById(R.id.relayoff); relayoff.setOnClickListener { if (m_btSocket != null) { relayoff() } else { socketerror() } }
+        val relayon: Button = findViewById(R.id.relayon); relayon.setOnClickListener { if (m_btSocket != null) { relayon() } else { socketerror() } }
 
         val enablebt: Button = findViewById(R.id.enableBT); enablebt.setOnClickListener { enablebt() }
         val disablebt: Button = findViewById(R.id.disableBT); disablebt.setOnClickListener { disablebt() }
         val connectbt: Button = findViewById(R.id.connect); connectbt.setOnClickListener { connectbt() }
         val disconnectbt: Button = findViewById(R.id.disconnect); disconnectbt.setOnClickListener { disconnectbt() }
 
-        val speed: SeekBar = findViewById(R.id.speed)
+
         speed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (m_btSocket != null) {
@@ -123,6 +87,14 @@ class MainActivity : AppCompatActivity() {
     }
     private fun rotateright() {
         val bytes = byteArrayOf(6.toByte())
+        m_btSocket?.outputStream?.write(bytes)
+    }
+    private fun relayon() {
+        val bytes = byteArrayOf(7.toByte())
+        m_btSocket?.outputStream?.write(bytes)
+    }
+    private fun relayoff() {
+        val bytes = byteArrayOf(8.toByte())
         m_btSocket?.outputStream?.write(bytes)
     }
 
@@ -178,20 +150,6 @@ class MainActivity : AppCompatActivity() {
     private fun others() {
         val intent = Intent(this, Others::class.java)
         startActivity(intent)
-    }
-
-    private fun relayon() {
-        val bytes = byteArrayOf(7.toByte())
-        if (m_btSocket != null) {
-            m_btSocket?.outputStream?.write(bytes)
-        } else { socketerror() }
-    }
-
-    private fun relayoff() {
-        val bytes = byteArrayOf(8.toByte())
-        if (m_btSocket != null) {
-            m_btSocket?.outputStream?.write(bytes)
-        } else { socketerror() }
     }
 
     private fun socketerror() { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
