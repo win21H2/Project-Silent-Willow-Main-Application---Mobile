@@ -35,15 +35,15 @@ class MainActivity : AppCompatActivity() {
         val rotateleft: Button = findViewById(R.id.rotateleft); rotateleft.setOnClickListener { if (m_btSocket != null) { rotateleft() } else { socketerror() } }
         val rotateright: Button = findViewById(R.id.rotateright); rotateright.setOnClickListener { if (m_btSocket != null) { rotateright() } else { socketerror() } }
 
+        val AION: Button = findViewById(R.id.AION); AION.setOnClickListener { if (m_btSocket != null) { AION() } else { socketerror() } }
+        val AIOFF: Button = findViewById(R.id.AIOFF); AIOFF.setOnClickListener { if (m_btSocket != null) { AIOFF() } else { socketerror() } }
+
         val others: Button = findViewById(R.id.others); others.setOnClickListener { others() }
-        val relayoff: Button = findViewById(R.id.relayoff); relayoff.setOnClickListener { if (m_btSocket != null) { relayoff() } else { socketerror() } }
-        val relayon: Button = findViewById(R.id.relayon); relayon.setOnClickListener { if (m_btSocket != null) { relayon() } else { socketerror() } }
 
         val enablebt: Button = findViewById(R.id.enableBT); enablebt.setOnClickListener { enablebt() }
         val disablebt: Button = findViewById(R.id.disableBT); disablebt.setOnClickListener { disablebt() }
         val connectbt: Button = findViewById(R.id.connect); connectbt.setOnClickListener { connectbt() }
         val disconnectbt: Button = findViewById(R.id.disconnect); disconnectbt.setOnClickListener { disconnectbt() }
-
 
         speed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -89,11 +89,11 @@ class MainActivity : AppCompatActivity() {
         val bytes = byteArrayOf(6.toByte())
         m_btSocket?.outputStream?.write(bytes)
     }
-    private fun relayon() {
+    private fun AION() {
         val bytes = byteArrayOf(7.toByte())
         m_btSocket?.outputStream?.write(bytes)
     }
-    private fun relayoff() {
+    private fun AIOFF() {
         val bytes = byteArrayOf(8.toByte())
         m_btSocket?.outputStream?.write(bytes)
     }

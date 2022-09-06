@@ -17,6 +17,9 @@
     <string name="back">Back</string>
     <string name="home">Home</string>
     <string name="others">More</string>
+        <string name="AION">AI ON</string>
+        <string name="AIOFF">AI OFF</string>
+
 
     <string name="startbtscan">Paired devices</string>
     <string name="stopbtscan">Stop scan</string>
