@@ -61,42 +61,19 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun stop() {
-        val bytes = byteArrayOf(0.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun backwards() {
-        val bytes = byteArrayOf(1.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun forwards() {
-        val bytes = byteArrayOf(2.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun left() {
-        val bytes = byteArrayOf(3.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun right() {
-        val bytes = byteArrayOf(4.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun rotateleft() {
-        val bytes = byteArrayOf(5.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun rotateright() {
-        val bytes = byteArrayOf(6.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun AION() {
-        val bytes = byteArrayOf(7.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
-    private fun AIOFF() {
-        val bytes = byteArrayOf(8.toByte())
-        m_btSocket?.outputStream?.write(bytes)
-    }
+    private fun stop() { val bytes = byteArrayOf(0.toByte()); m_btSocket?.outputStream?.write(bytes) }
+    private fun backwards() { val bytes = byteArrayOf(1.toByte()); m_btSocket?.outputStream?.write(bytes) }
+    private fun forwards() { val bytes = byteArrayOf(2.toByte()); m_btSocket?.outputStream?.write(bytes) }
+    private fun left() { val bytes = byteArrayOf(3.toByte()); m_btSocket?.outputStream?.write(bytes) }
+    private fun right() { val bytes = byteArrayOf(4.toByte()); m_btSocket?.outputStream?.write(bytes) }
+    private fun rotateleft() { val bytes = byteArrayOf(5.toByte()); m_btSocket?.outputStream?.write(bytes) }
+    private fun rotateright() {val bytes = byteArrayOf(6.toByte()); m_btSocket?.outputStream?.write(bytes) }
+
+    private fun AION() { val bytes = byteArrayOf(7.toByte()); m_btSocket?.outputStream?.write(bytes) }
+    private fun AIOFF() { val bytes = byteArrayOf(8.toByte()); m_btSocket?.outputStream?.write(bytes) }
+
+    private fun socketerror() { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
+    private fun others() { val intent = Intent(this, Others::class.java); startActivity(intent) }
 
     private fun enablebt() {
         val bluetoothManager: BluetoothManager = getSystemService(BluetoothManager::class.java)
@@ -146,11 +123,4 @@ class MainActivity : AppCompatActivity() {
         bluetoothAdapter?.disable()
         Toast.makeText(this, "BT OFF", Toast.LENGTH_SHORT).show()
     }
-
-    private fun others() {
-        val intent = Intent(this, Others::class.java)
-        startActivity(intent)
-    }
-
-    private fun socketerror() { Toast.makeText(this, "SOCKET NOT CONNECTED", Toast.LENGTH_SHORT).show() }
 }
