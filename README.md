@@ -13,5 +13,3 @@
 <h6 align="center">The main reason why I wanted to custom make it is because I was originally using MIT App Inventor (AI2) and I saw that there was not much in terms of how much I could customize how stuff looked/worked etc. and I wanted to have full control over what was in the app/how it functioned</h6>
 <h3 align="center">Where can I find sample code?</h3>
 <h6 align="center">If you want to find sample code, head over to -->Arduino<br>You can find Project Silent Willows main control code in -->Arduino -->ProjectSilentWillowControlMain.cpp<br> or sample code for a 1 digit 7 segment display in -->Arduino -->incomingdata.ino</h6>
-<h4 align="center">Legal</h4>
-<h6 align="center">Made by 324Hz/win21H2 under the GNU General Public License Version 3, 29 June 2007<br><br>I take these licenses quite seriously and if any of the terms are violated, I will make sure action is taken upon either via the legal system or by requesting to remove this software.
